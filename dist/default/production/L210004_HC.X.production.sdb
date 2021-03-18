@@ -1329,15 +1329,15 @@
 [v _main `(v  1 e 0 0 ]
 "988
 [v _isr `I(v  1 s 0 isr ]
-"1095
+"1089
 [v _hc_led_on `(v  1 e 0 0 ]
-"1111
+"1105
 [v _hc_led_off `(v  1 e 0 0 ]
 [v i1_hc_led_off `(v  1 e 0 0 ]
 [v i1_hc_led_off `(v  1 e 0 0 ]
-"1130
+"1124
 [v _syn_synack_ack `(uc  1 e 1 0 ]
-"1147
+"1141
 [v _connection_est `(v  1 e 0 0 ]
 "141 /hitech/products/compilers/pic/pro/9.83/dist/linux/include/pic16f1937.h
 [v _INDF0 `VEuc  1 e 1 @0 ]
@@ -3439,74 +3439,64 @@
 [v _main `(v  1 e 0 0 ]
 {
 "973
-[v main@i_3358 `ui  1 a 2 38 ]
+[v main@i_3358 `ui  1 a 2 28 ]
 "969
-[v main@i_3357 `ui  1 a 2 32 ]
+[v main@i_3357 `ui  1 a 2 22 ]
 "964
-[v main@i_3356 `ui  1 a 2 30 ]
+[v main@i_3356 `ui  1 a 2 20 ]
 "963
-[v main@c `i  1 a 2 14 ]
+[v main@c `i  1 a 2 4 ]
 "961
-[v main@echo `uc  1 a 1 19 ]
+[v main@echo `uc  1 a 1 9 ]
 "453
-[v main@i_3353 `ui  1 a 2 36 ]
+[v main@i_3353 `ui  1 a 2 26 ]
 "449
-[v main@i_3352 `ui  1 a 2 28 ]
+[v main@i_3352 `ui  1 a 2 18 ]
 "443
-[v main@i_3351 `ui  1 a 2 26 ]
+[v main@i_3351 `ui  1 a 2 16 ]
 "431
-[v main@i_3350 `ui  1 a 2 34 ]
+[v main@i_3350 `ui  1 a 2 24 ]
 "427
-[v main@i_3349 `ui  1 a 2 24 ]
+[v main@i_3349 `ui  1 a 2 14 ]
 "421
-[v main@i `ui  1 a 2 22 ]
+[v main@i `ui  1 a 2 12 ]
 "420
-[v main@x `i  1 a 2 20 ]
+[v main@x `i  1 a 2 10 ]
 "397
-[v main@safety `i  1 a 2 16 ]
+[v main@safety `i  1 a 2 6 ]
 "395
-[v main@power_de `i  1 a 2 12 ]
-"394
-[v main@mode_de `i  1 a 2 10 ]
+[v main@power_de `i  1 a 2 2 ]
 "393
-[v main@heat_de `i  1 a 2 8 ]
-"392
-[v main@z3_de `i  1 a 2 6 ]
-"391
-[v main@z2_de `i  1 a 2 4 ]
-"390
-[v main@z1_de `i  1 a 2 2 ]
-"389
-[v main@z0_de `i  1 a 2 0 ]
+[v main@heat_de `i  1 a 2 0 ]
 "413
-[v main@connect_ack `uc  1 a 1 18 ]
+[v main@connect_ack `uc  1 a 1 8 ]
 "986
 } 0
-"1147
+"1141
 [v _connection_est `(v  1 e 0 0 ]
 {
-"1148
+"1142
 [v connection_est@i `i  1 a 2 2 ]
-"1154
+"1148
 } 0
-"1130
+"1124
 [v _syn_synack_ack `(uc  1 e 1 0 ]
 {
-"1134
+"1128
 [v syn_synack_ack@c `uc  1 a 1 5 ]
-"1131
+"1125
 [v syn_synack_ack@echo `uc  1 a 1 6 ]
-"1144
+"1138
 } 0
-"1111
+"1105
 [v _hc_led_off `(v  1 e 0 0 ]
 {
-"1128
+"1122
 } 0
-"1095
+"1089
 [v _hc_led_on `(v  1 e 0 0 ]
 {
-"1109
+"1103
 } 0
 "227
 [v _getch `(uc  1 e 1 0 ]
@@ -3528,10 +3518,10 @@
 "988
 [v _isr `I(v  1 s 0 isr ]
 {
-"1093
+"1087
 } 0
-"1111
+"1105
 [v i1_hc_led_off `(v  1 e 0 0 ]
 {
-"1128
+"1122
 } 0

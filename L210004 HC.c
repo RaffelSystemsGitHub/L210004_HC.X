@@ -112,23 +112,23 @@ unsigned char getche(void);
 
 //I/O Defines
 
-#define		ZONE0_BTN		RD5
-#define		ZONE1_BTN		RD3
-#define		ZONE2_BTN		RA6
-#define		ZONE3_BTN		RC5
-#define		ZONE0_LED		LATD4
-#define		ZONE1_LED		LATD2
-#define		ZONE2_LED		LATA7
-#define		ZONE3_LED		LATC4
+//#define		ZONE0_BTN		RD5
+//#define		ZONE1_BTN		RD3
+//#define		ZONE2_BTN		RA6
+//#define		ZONE3_BTN		RC5
+//#define		ZONE0_LED		LATD4
+//#define		ZONE1_LED		LATD2
+//#define		ZONE2_LED		LATA7
+//#define		ZONE3_LED		LATC4
 
 #define		POWER_BTN		RD1
 #define		POWER_LED		LATD0
-#define		MODE_BTN		RC3 
+//#define		MODE_BTN		RC3 
 #define		HEAT_LED		LATA3
 #define		HEAT_BTN		RB4
-#define		MODE3_LED		LATC0
-#define		MODE2_LED		LATC1
-#define		MODE1_LED		LATC2
+//#define		MODE3_LED		LATC0
+//#define		MODE2_LED		LATC1
+//#define		MODE1_LED		LATC2
 
 #define		LUM_OPEN_BTN	RE0
 #define		PR_OPEN_BTN     RA5
@@ -404,9 +404,9 @@ void main(void){
     tx_buffer = 'a';                //stop extraneous tx    
     
     
-    MODE1_LED = 1;                  //mode LED turns on intermittently
-    MODE2_LED = 1;                  //drive pins high to prevent
-    MODE3_LED = 1;
+//    MODE1_LED = 1;                  //mode LED turns on intermittently
+//    MODE2_LED = 1;                  //drive pins high to prevent
+//    MODE3_LED = 1;
     
 	__delay_ms(250);                //let tx init complete
     
@@ -487,199 +487,199 @@ void main(void){
 //this may cause some confusion so I am attempting to 
 //clear any misunderstanding here. - CSS
 		//zone0 enables.
-		if(ZONE0_BTN){				
-			if(!(--z0_de) && !pwr_on){
-				if(z0_on && !z0_sent){
-					tx_buffer = Z0_ON;
-					tx_flag = true;
-					ZONE0_LED = 0;
-					z0_on = false;
-                    z0_off = true;
-                    massage_timeout = LONG_TOUT;
-				}
-				else if(z0_off){
-					tx_buffer = Z0_OFF;
-                    z0_sent = true;
-					tx_flag = true;
-					ZONE0_LED = 1;
-					z0_off = false;
-                    z0_on = true;
-                    massage_timeout = LONG_TOUT;
-				}                
-			}
-            if((last_tx[0] != Z0_ON) && (z0_on == false)){  //these statements are a check to ensure that if the button is held 
-//				z0_off = true;                              //the correct flags will still be set. Previously flags would be 
-                                                            //incorrectly set when more than 1 button was pressed. This is the fix -CSS
-			}
-			if((last_tx[0] != Z0_OFF) && (z0_off == false)){
-//				z0_on = true;
-			}
-		}
-		else{
-			z0_de = DEBOUNCE;
-            z0_sent = false;
-			if(last_tx[0] == Z0_ON){
-//				z0_off = true;
-			}
-			if(last_tx[0] == Z0_OFF){
-//				z0_on = true;
-			}
-		}
-		//zone1 enables.
-		if(ZONE1_BTN){				
-			if(!(--z1_de) && !pwr_on){
-				if(z1_on && !z1_sent){
-					tx_buffer = Z1_ON;
-					tx_flag = true;
-					ZONE1_LED = 0;
-					z1_on = false;
-                    z1_off = true;
-                    massage_timeout = LONG_TOUT;
-				}
-				else if(z1_off){
-					tx_buffer = Z1_OFF;
-					tx_flag = true;
-					ZONE1_LED = 1;
-					z1_off = false;
-                    z1_on = true;
-                    z1_sent = true;
-                    massage_timeout = LONG_TOUT;
-				}
-			}
-            if((last_tx[0] != Z1_ON) && (z1_on == false)){
-//				z1_off = true;
-			}
-			if((last_tx[0] != Z1_OFF) && (z1_off == false)){
-//				z1_on = true;
-			}
-		}
-		else{
-			z1_de = DEBOUNCE;
-            z1_sent = false;
-			if(last_tx[0] == Z1_ON){
-//				z1_off = true;
-			}
-			if(last_tx[0] == Z1_OFF){
-//				z1_on = true;
-			}
-		}	
-		//zone2 enables
-		if(ZONE2_BTN){	
-            if(!(--z2_de) && !pwr_on){
-                if(z2_on && !z2_sent){
-                    tx_buffer = Z2_ON;	
-                    tx_flag = true;
-                    ZONE2_LED = 0;
-                    z2_on = false;
-                    z2_off = true;
-                    massage_timeout = LONG_TOUT;
-                }
-                else if(z2_off){
-                    tx_buffer = Z2_OFF;
-                    tx_flag = true;
-                    ZONE2_LED = 1;
-                    z2_off = false;
-                    z2_on = true;
-                    z2_sent = true;
-                    massage_timeout = LONG_TOUT;
-                }
-            }
-            if((last_tx[0] != Z2_ON) && (z2_on == false)){
-//                z2_off = true;
-            }
-            if((last_tx[0] != Z2_OFF) && (z2_off == false)){
-//                z2_on = true;
-            }            
-		}
-		else{
-			z2_de = DEBOUNCE;
-            z2_sent = false;
-			if(last_tx[0] == Z2_ON){
-//				z2_off = true;
-			}
-			if(last_tx[0] == Z2_OFF){
-//				z2_on = true;
-			}
-		}	
-		//zone3 enables.
-		if(ZONE3_BTN){				
-			if(!(--z3_de) && !pwr_on){
-				if(z3_on && !z3_sent){
-					tx_buffer = Z3_ON;
-					tx_flag = true;
-					ZONE3_LED = 0;
-					z3_on = false;
-                    z3_off = true;
-                    massage_timeout = LONG_TOUT;
-				}
-				else if(z3_off){
-					tx_buffer = Z3_OFF;
-					tx_flag = true;
-					ZONE3_LED = 1;
-					z3_off = false;
-                    z3_on = true;
-                    z3_sent = true;
-                    massage_timeout = LONG_TOUT;
-				}
-			}
-            if((last_tx[0] != Z3_ON) && (z3_on == false)){
-//				z3_off = true;
-			}
-			if((last_tx[0] != Z3_OFF) && (z3_off == false)){
-//				z3_on = true;
-			}
-		}
-		else{
-			z3_de = DEBOUNCE;
-            z3_sent = false;
-			if(last_tx[0] == Z3_ON){
-//				z3_off = true;
-			}
-			if(last_tx[0] == Z3_OFF){
-//				z3_on = true;
-			}
-		}
-		//massage mode handling
-		if(MODE_BTN){				
-			if(!(--mode_de) && !pwr_on){            //bugged, if btn is held, will cycle modes, ok operation for now            
-                mode_state++;
-                if(mode_state > 3){                 //cycle through massage modes, reset after 3rd
-                    mode_state = 1;
-                }
-                switch(mode_state){
-                    case 1:
-                        tx_buffer = M_ALTERNATE;    //cycle through modes. Will remember mode after OFF command
-                        tx_flag = true;
-                        MODE1_LED = 0;
-                        MODE2_LED = 1;
-                        MODE3_LED = 1;
-                        massage_timeout = LONG_TOUT;
-                        break;
-                    case 2:
-                        tx_buffer = M_PULSE;
-                        tx_flag = true;
-                        MODE1_LED = 1;
-                        MODE2_LED = 0;
-                        MODE3_LED = 1;
-                        massage_timeout = LONG_TOUT;
-                        break;
-                    case 3:
-                        tx_buffer = M_WAVE;
-                        tx_flag = true;
-                        MODE1_LED = 1;
-                        MODE2_LED = 1;
-                        MODE3_LED = 0;
-                        massage_timeout = LONG_TOUT;
-                        break;
-                    default:
-                        mode_state = 0;      
-                }
-			}
-		}
-		else{
-			mode_de = DEBOUNCE;
-            
-		}				
+//		if(ZONE0_BTN){				
+//			if(!(--z0_de) && !pwr_on){
+//				if(z0_on && !z0_sent){
+//					tx_buffer = Z0_ON;
+//					tx_flag = true;
+//					ZONE0_LED = 0;
+//					z0_on = false;
+//                    z0_off = true;
+//                    massage_timeout = LONG_TOUT;
+//				}
+//				else if(z0_off){
+//					tx_buffer = Z0_OFF;
+//                    z0_sent = true;
+//					tx_flag = true;
+//					ZONE0_LED = 1;
+//					z0_off = false;
+//                    z0_on = true;
+//                    massage_timeout = LONG_TOUT;
+//				}                
+//			}
+//            if((last_tx[0] != Z0_ON) && (z0_on == false)){  //these statements are a check to ensure that if the button is held 
+////				z0_off = true;                              //the correct flags will still be set. Previously flags would be 
+//                                                            //incorrectly set when more than 1 button was pressed. This is the fix -CSS
+//			}
+//			if((last_tx[0] != Z0_OFF) && (z0_off == false)){
+////				z0_on = true;
+//			}
+//		}
+//		else{
+//			z0_de = DEBOUNCE;
+//            z0_sent = false;
+//			if(last_tx[0] == Z0_ON){
+////				z0_off = true;
+//			}
+//			if(last_tx[0] == Z0_OFF){
+////				z0_on = true;
+//			}
+//		}
+//		//zone1 enables.
+//		if(ZONE1_BTN){				
+//			if(!(--z1_de) && !pwr_on){
+//				if(z1_on && !z1_sent){
+//					tx_buffer = Z1_ON;
+//					tx_flag = true;
+//					ZONE1_LED = 0;
+//					z1_on = false;
+//                    z1_off = true;
+//                    massage_timeout = LONG_TOUT;
+//				}
+//				else if(z1_off){
+//					tx_buffer = Z1_OFF;
+//					tx_flag = true;
+//					ZONE1_LED = 1;
+//					z1_off = false;
+//                    z1_on = true;
+//                    z1_sent = true;
+//                    massage_timeout = LONG_TOUT;
+//				}
+//			}
+//            if((last_tx[0] != Z1_ON) && (z1_on == false)){
+////				z1_off = true;
+//			}
+//			if((last_tx[0] != Z1_OFF) && (z1_off == false)){
+////				z1_on = true;
+//			}
+//		}
+//		else{
+//			z1_de = DEBOUNCE;
+//            z1_sent = false;
+//			if(last_tx[0] == Z1_ON){
+////				z1_off = true;
+//			}
+//			if(last_tx[0] == Z1_OFF){
+////				z1_on = true;
+//			}
+//		}	
+//		//zone2 enables
+//		if(ZONE2_BTN){	
+//            if(!(--z2_de) && !pwr_on){
+//                if(z2_on && !z2_sent){
+//                    tx_buffer = Z2_ON;	
+//                    tx_flag = true;
+//                    ZONE2_LED = 0;
+//                    z2_on = false;
+//                    z2_off = true;
+//                    massage_timeout = LONG_TOUT;
+//                }
+//                else if(z2_off){
+//                    tx_buffer = Z2_OFF;
+//                    tx_flag = true;
+//                    ZONE2_LED = 1;
+//                    z2_off = false;
+//                    z2_on = true;
+//                    z2_sent = true;
+//                    massage_timeout = LONG_TOUT;
+//                }
+//            }
+//            if((last_tx[0] != Z2_ON) && (z2_on == false)){
+////                z2_off = true;
+//            }
+//            if((last_tx[0] != Z2_OFF) && (z2_off == false)){
+////                z2_on = true;
+//            }            
+//		}
+//		else{
+//			z2_de = DEBOUNCE;
+//            z2_sent = false;
+//			if(last_tx[0] == Z2_ON){
+////				z2_off = true;
+//			}
+//			if(last_tx[0] == Z2_OFF){
+////				z2_on = true;
+//			}
+//		}	
+//		//zone3 enables.
+//		if(ZONE3_BTN){				
+//			if(!(--z3_de) && !pwr_on){
+//				if(z3_on && !z3_sent){
+//					tx_buffer = Z3_ON;
+//					tx_flag = true;
+//					ZONE3_LED = 0;
+//					z3_on = false;
+//                    z3_off = true;
+//                    massage_timeout = LONG_TOUT;
+//				}
+//				else if(z3_off){
+//					tx_buffer = Z3_OFF;
+//					tx_flag = true;
+//					ZONE3_LED = 1;
+//					z3_off = false;
+//                    z3_on = true;
+//                    z3_sent = true;
+//                    massage_timeout = LONG_TOUT;
+//				}
+//			}
+//            if((last_tx[0] != Z3_ON) && (z3_on == false)){
+////				z3_off = true;
+//			}
+//			if((last_tx[0] != Z3_OFF) && (z3_off == false)){
+////				z3_on = true;
+//			}
+//		}
+//		else{
+//			z3_de = DEBOUNCE;
+//            z3_sent = false;
+//			if(last_tx[0] == Z3_ON){
+////				z3_off = true;
+//			}
+//			if(last_tx[0] == Z3_OFF){
+////				z3_on = true;
+//			}
+//		}
+//		//massage mode handling
+//		if(MODE_BTN){				
+//			if(!(--mode_de) && !pwr_on){            //bugged, if btn is held, will cycle modes, ok operation for now            
+//                mode_state++;
+//                if(mode_state > 3){                 //cycle through massage modes, reset after 3rd
+//                    mode_state = 1;
+//                }
+//                switch(mode_state){
+//                    case 1:
+//                        tx_buffer = M_ALTERNATE;    //cycle through modes. Will remember mode after OFF command
+//                        tx_flag = true;
+//                        MODE1_LED = 0;
+//                        MODE2_LED = 1;
+//                        MODE3_LED = 1;
+//                        massage_timeout = LONG_TOUT;
+//                        break;
+//                    case 2:
+//                        tx_buffer = M_PULSE;
+//                        tx_flag = true;
+//                        MODE1_LED = 1;
+//                        MODE2_LED = 0;
+//                        MODE3_LED = 1;
+//                        massage_timeout = LONG_TOUT;
+//                        break;
+//                    case 3:
+//                        tx_buffer = M_WAVE;
+//                        tx_flag = true;
+//                        MODE1_LED = 1;
+//                        MODE2_LED = 1;
+//                        MODE3_LED = 0;
+//                        massage_timeout = LONG_TOUT;
+//                        break;
+//                    default:
+//                        mode_state = 0;      
+//                }
+//			}
+//		}
+//		else{
+//			mode_de = DEBOUNCE;
+//            
+//		}				
 		//heat enable
 		if(HEAT_BTN){
             if(POWER_BTN){
@@ -731,21 +731,21 @@ void main(void){
                     pwr_on = false;			//set toggle off
                     pwr_off = true;
                     massage_timeout = LONG_TOUT;
-                    if(mode_state == 1){
-                        MODE1_LED = 0;
-                        MODE2_LED = 1;
-                        MODE3_LED = 1;
-                    }
-                    else if(mode_state == 2){
-                        MODE1_LED = 1;
-                        MODE2_LED = 0;
-                        MODE3_LED = 1;
-                    }
-                    else if(mode_state == 3){
-                        MODE1_LED = 1;
-                        MODE2_LED = 1;
-                        MODE3_LED = 0;
-                    }
+//                    if(mode_state == 1){
+//                        MODE1_LED = 0;
+//                        MODE2_LED = 1;
+//                        MODE3_LED = 1;
+//                    }
+//                    else if(mode_state == 2){
+//                        MODE1_LED = 1;
+//                        MODE2_LED = 0;
+//                        MODE3_LED = 1;
+//                    }
+//                    else if(mode_state == 3){
+//                        MODE1_LED = 1;
+//                        MODE2_LED = 1;
+//                        MODE3_LED = 0;
+//                    }
                 }
                 else if(pwr_off){
                     tx_buffer = MASSAGE_OFF;
@@ -771,16 +771,16 @@ void main(void){
 				//pwr_off = true;
 			}			
   		}			
-		if((POWER_LED == 0)&&(ZONE0_LED == 1)&&(ZONE1_LED == 1)&&(ZONE2_LED == 1)&&(ZONE3_LED == 1)){
-			tx_buffer = MASSAGE_OFF;//check if all zones are off while pump is still on, 
-			tx_flag = true;			//turn off pump if all zones are off
-            hc_led_off();
-            HEAT_LED = 1;
-            heat_on  = true;
-            heat_off = false;
-            pwr_off = false;		//set toggle off
-            pwr_on = true;
-		}
+//		if((POWER_LED == 0)&&(ZONE0_LED == 1)&&(ZONE1_LED == 1)&&(ZONE2_LED == 1)&&(ZONE3_LED == 1)){
+//			tx_buffer = MASSAGE_OFF;//check if all zones are off while pump is still on, 
+//			tx_flag = true;			//turn off pump if all zones are off
+//            hc_led_off();
+//            HEAT_LED = 1;
+//            heat_on  = true;
+//            heat_off = false;
+//            pwr_off = false;		//set toggle off
+//            pwr_on = true;
+//		}
 //These control the relay operations. High/Low reads are handled in the TMR0 ISR
 //with a flag indicating the state. the xx_op_sent will limit the amount of tx to
 //a single tx per button press. This also operates on the assumption that while(1)
@@ -1000,8 +1000,7 @@ static void interrupt isr(void){
 //        }
         
 		if(LUM_OPEN_BTN){
-			if(LUM_CLOSE_BTN || PR_OPEN_BTN || HR_OPEN_BTN || PR_CLOSE_BTN || HR_CLOSE_BTN ||
-                    ZONE0_BTN || ZONE1_BTN || ZONE2_BTN || ZONE3_BTN || HEAT_BTN || MODE_BTN || POWER_BTN){
+			if(LUM_CLOSE_BTN || PR_OPEN_BTN || HR_OPEN_BTN || PR_CLOSE_BTN || HR_CLOSE_BTN || HEAT_BTN || POWER_BTN){
 			}
 			else{
 				lum_btn_op = true;
@@ -1012,8 +1011,7 @@ static void interrupt isr(void){
 		}
         
 		if(LUM_CLOSE_BTN){
-			if(LUM_OPEN_BTN || PR_OPEN_BTN || HR_OPEN_BTN || PR_CLOSE_BTN || HR_CLOSE_BTN ||
-                    ZONE0_BTN || ZONE1_BTN || ZONE2_BTN || ZONE3_BTN || HEAT_BTN || MODE_BTN || POWER_BTN){
+			if(LUM_OPEN_BTN || PR_OPEN_BTN || HR_OPEN_BTN || PR_CLOSE_BTN || HR_CLOSE_BTN || HEAT_BTN || POWER_BTN){
 			}
 			else{
 				lum_btn_cl = true;
@@ -1024,8 +1022,7 @@ static void interrupt isr(void){
 		}
         
 		if(PR_OPEN_BTN){
-			if(PR_CLOSE_BTN || HR_OPEN_BTN || HR_CLOSE_BTN || LUM_OPEN_BTN || LUM_CLOSE_BTN ||
-                    ZONE0_BTN || ZONE1_BTN || ZONE2_BTN || ZONE3_BTN || HEAT_BTN || MODE_BTN || POWER_BTN){
+			if(PR_CLOSE_BTN || HR_OPEN_BTN || HR_CLOSE_BTN || LUM_OPEN_BTN || LUM_CLOSE_BTN || HEAT_BTN || POWER_BTN){
 			}
 			else{
 				pr_btn_op = true;
@@ -1036,8 +1033,7 @@ static void interrupt isr(void){
 		}
         
 		if(PR_CLOSE_BTN){
-			if(PR_OPEN_BTN || HR_OPEN_BTN || HR_CLOSE_BTN || LUM_OPEN_BTN || LUM_CLOSE_BTN ||
-                    ZONE0_BTN || ZONE1_BTN || ZONE2_BTN || ZONE3_BTN || HEAT_BTN || MODE_BTN || POWER_BTN){
+			if(PR_OPEN_BTN || HR_OPEN_BTN || HR_CLOSE_BTN || LUM_OPEN_BTN || LUM_CLOSE_BTN || HEAT_BTN || POWER_BTN){
 			}
 			else{
 				pr_btn_cl = true;
@@ -1048,8 +1044,7 @@ static void interrupt isr(void){
 		}
         
 		if(HR_OPEN_BTN){
-			if(HR_CLOSE_BTN || PR_OPEN_BTN || PR_CLOSE_BTN || LUM_OPEN_BTN || LUM_CLOSE_BTN ||
-                    ZONE0_BTN || ZONE1_BTN || ZONE2_BTN || ZONE3_BTN || HEAT_BTN || MODE_BTN || POWER_BTN){
+			if(HR_CLOSE_BTN || PR_OPEN_BTN || PR_CLOSE_BTN || LUM_OPEN_BTN || LUM_CLOSE_BTN || HEAT_BTN || POWER_BTN){
 			}
 			else{
 				hr_btn_op = true;
@@ -1060,8 +1055,7 @@ static void interrupt isr(void){
 		}
         
 		if(HR_CLOSE_BTN){
-			if(HR_OPEN_BTN || PR_OPEN_BTN || PR_CLOSE_BTN || LUM_OPEN_BTN || LUM_CLOSE_BTN ||
-                    ZONE0_BTN || ZONE1_BTN || ZONE2_BTN || ZONE3_BTN || HEAT_BTN || MODE_BTN || POWER_BTN){
+			if(HR_OPEN_BTN || PR_OPEN_BTN || PR_CLOSE_BTN || LUM_OPEN_BTN || LUM_CLOSE_BTN || HEAT_BTN || POWER_BTN){
 			}
 			else{
 				hr_btn_cl = true;
@@ -1094,35 +1088,35 @@ static void interrupt isr(void){
 
 void hc_led_on(){
     POWER_LED = 0;			//0V > sink current > LED on
-	ZONE0_LED = 0;			//turn on all LEDs when power btn pressed
+//	ZONE0_LED = 0;			//turn on all LEDs when power btn pressed
 	z0_off = true;			//set flags for individual zone control
 	z0_on = false;          //change this to function 
-	ZONE1_LED = 0;
+//	ZONE1_LED = 0;
 	z1_off = true;
 	z1_on = false;
-	ZONE2_LED = 0;
+//	ZONE2_LED = 0;
 	z2_off = true;
 	z2_on = false;
-	ZONE3_LED = 0;
+//	ZONE3_LED = 0;
 	z3_off = true;
 	z3_on = false;	
 }
 
 void hc_led_off(){
     POWER_LED = 1;			//5V > no current > LED off
-	MODE1_LED = 1;          //change this to function
-	MODE2_LED = 1;
-	MODE3_LED = 1;
-	ZONE0_LED = 1;
+//	MODE1_LED = 1;          //change this to function
+//	MODE2_LED = 1;
+//	MODE3_LED = 1;
+//	ZONE0_LED = 1;
 	z0_on  = true;
 	z0_off = false;
-	ZONE1_LED = 1;
+//	ZONE1_LED = 1;
 	z1_on  = true;
 	z1_off = false;
-	ZONE2_LED = 1;
+//	ZONE2_LED = 1;
 	z2_on  = true;
 	z2_off = false;
-	ZONE3_LED = 1;
+//	ZONE3_LED = 1;
 	z3_on  = true;
 	z3_off = false;
 }

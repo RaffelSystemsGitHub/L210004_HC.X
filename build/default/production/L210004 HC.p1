@@ -5390,15 +5390,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;L210004 HC.c: 404: tx_buffer = 'a';
 "404
 [e = _tx_buffer -> -> 97 `ui `uc ]
-[; ;L210004 HC.c: 407: LATC2 = 1;
-"407
-[e = _LATC2 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 408: LATC1 = 1;
-"408
-[e = _LATC1 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 409: LATC0 = 1;
-"409
-[e = _LATC0 -> -> 1 `i `b ]
 [; ;L210004 HC.c: 411: _delay((unsigned long)((250)*(4000000/4000.0)));
 "411
 [e ( __delay (1 -> * -> -> 250 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
@@ -5658,640 +5649,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 301 ]
 [; ;L210004 HC.c: 473: }
-[; ;L210004 HC.c: 490: if(RD5){
-"490
-[e $ ! _RD5 302  ]
-{
-[; ;L210004 HC.c: 491: if(!(--z0_de) && !pwr_on){
-"491
-[e $ ! && ! != =- _z0_de -> 1 `i -> 0 `i ! != -> _pwr_on `i -> -> -> 0 `i `Vuc `i 303  ]
-{
-[; ;L210004 HC.c: 492: if(z0_on && !z0_sent){
-"492
-[e $ ! && != -> _z0_on `i -> -> -> 0 `i `Vuc `i ! != -> _z0_sent `i -> -> -> 0 `i `Vuc `i 304  ]
-{
-[; ;L210004 HC.c: 493: tx_buffer = 'L';
-"493
-[e = _tx_buffer -> -> 76 `ui `uc ]
-[; ;L210004 HC.c: 494: tx_flag = 1;
-"494
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 495: LATD4 = 0;
-"495
-[e = _LATD4 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 496: z0_on = 0;
-"496
-[e = _z0_on -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 497: z0_off = 1;
-"497
-[e = _z0_off -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 498: massage_timeout = 20*60*29.5;
-"498
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-"499
-}
-[; ;L210004 HC.c: 499: }
-[e $U 305  ]
-"500
-[e :U 304 ]
-[; ;L210004 HC.c: 500: else if(z0_off){
-[e $ ! != -> _z0_off `i -> -> -> 0 `i `Vuc `i 306  ]
-{
-[; ;L210004 HC.c: 501: tx_buffer = 'M';
-"501
-[e = _tx_buffer -> -> 77 `ui `uc ]
-[; ;L210004 HC.c: 502: z0_sent = 1;
-"502
-[e = _z0_sent -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 503: tx_flag = 1;
-"503
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 504: LATD4 = 1;
-"504
-[e = _LATD4 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 505: z0_off = 0;
-"505
-[e = _z0_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 506: z0_on = 1;
-"506
-[e = _z0_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 507: massage_timeout = 20*60*29.5;
-"507
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-"508
-}
-[e :U 306 ]
-"509
-[e :U 305 ]
-}
-[e :U 303 ]
-[; ;L210004 HC.c: 508: }
-[; ;L210004 HC.c: 509: }
-[; ;L210004 HC.c: 510: if((last_tx[0] != 'L') && (z0_on == 0)){
-"510
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 76 `ui == -> _z0_on `i -> 0 `i 307  ]
-{
-"513
-}
-[e :U 307 ]
-[; ;L210004 HC.c: 513: }
-[; ;L210004 HC.c: 514: if((last_tx[0] != 'M') && (z0_off == 0)){
-"514
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 77 `ui == -> _z0_off `i -> 0 `i 308  ]
-{
-"516
-}
-[e :U 308 ]
-"517
-}
-[; ;L210004 HC.c: 516: }
-[; ;L210004 HC.c: 517: }
-[e $U 309  ]
-"518
-[e :U 302 ]
-[; ;L210004 HC.c: 518: else{
-{
-[; ;L210004 HC.c: 519: z0_de = 200;
-"519
-[e = _z0_de -> 200 `i ]
-[; ;L210004 HC.c: 520: z0_sent = 0;
-"520
-[e = _z0_sent -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 521: if(last_tx[0] == 'L'){
-"521
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 76 `ui 310  ]
-{
-"523
-}
-[e :U 310 ]
-[; ;L210004 HC.c: 523: }
-[; ;L210004 HC.c: 524: if(last_tx[0] == 'M'){
-"524
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 77 `ui 311  ]
-{
-"526
-}
-[e :U 311 ]
-"527
-}
-[e :U 309 ]
-[; ;L210004 HC.c: 526: }
-[; ;L210004 HC.c: 527: }
-[; ;L210004 HC.c: 529: if(RD3){
-"529
-[e $ ! _RD3 312  ]
-{
-[; ;L210004 HC.c: 530: if(!(--z1_de) && !pwr_on){
-"530
-[e $ ! && ! != =- _z1_de -> 1 `i -> 0 `i ! != -> _pwr_on `i -> -> -> 0 `i `Vuc `i 313  ]
-{
-[; ;L210004 HC.c: 531: if(z1_on && !z1_sent){
-"531
-[e $ ! && != -> _z1_on `i -> -> -> 0 `i `Vuc `i ! != -> _z1_sent `i -> -> -> 0 `i `Vuc `i 314  ]
-{
-[; ;L210004 HC.c: 532: tx_buffer = 'N';
-"532
-[e = _tx_buffer -> -> 78 `ui `uc ]
-[; ;L210004 HC.c: 533: tx_flag = 1;
-"533
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 534: LATD2 = 0;
-"534
-[e = _LATD2 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 535: z1_on = 0;
-"535
-[e = _z1_on -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 536: z1_off = 1;
-"536
-[e = _z1_off -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 537: massage_timeout = 20*60*29.5;
-"537
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-"538
-}
-[; ;L210004 HC.c: 538: }
-[e $U 315  ]
-"539
-[e :U 314 ]
-[; ;L210004 HC.c: 539: else if(z1_off){
-[e $ ! != -> _z1_off `i -> -> -> 0 `i `Vuc `i 316  ]
-{
-[; ;L210004 HC.c: 540: tx_buffer = 'O';
-"540
-[e = _tx_buffer -> -> 79 `ui `uc ]
-[; ;L210004 HC.c: 541: tx_flag = 1;
-"541
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 542: LATD2 = 1;
-"542
-[e = _LATD2 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 543: z1_off = 0;
-"543
-[e = _z1_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 544: z1_on = 1;
-"544
-[e = _z1_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 545: z1_sent = 1;
-"545
-[e = _z1_sent -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 546: massage_timeout = 20*60*29.5;
-"546
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-"547
-}
-[e :U 316 ]
-"548
-[e :U 315 ]
-}
-[e :U 313 ]
-[; ;L210004 HC.c: 547: }
-[; ;L210004 HC.c: 548: }
-[; ;L210004 HC.c: 549: if((last_tx[0] != 'N') && (z1_on == 0)){
-"549
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 78 `ui == -> _z1_on `i -> 0 `i 317  ]
-{
-"551
-}
-[e :U 317 ]
-[; ;L210004 HC.c: 551: }
-[; ;L210004 HC.c: 552: if((last_tx[0] != 'O') && (z1_off == 0)){
-"552
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 79 `ui == -> _z1_off `i -> 0 `i 318  ]
-{
-"554
-}
-[e :U 318 ]
-"555
-}
-[; ;L210004 HC.c: 554: }
-[; ;L210004 HC.c: 555: }
-[e $U 319  ]
-"556
-[e :U 312 ]
-[; ;L210004 HC.c: 556: else{
-{
-[; ;L210004 HC.c: 557: z1_de = 200;
-"557
-[e = _z1_de -> 200 `i ]
-[; ;L210004 HC.c: 558: z1_sent = 0;
-"558
-[e = _z1_sent -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 559: if(last_tx[0] == 'N'){
-"559
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 78 `ui 320  ]
-{
-"561
-}
-[e :U 320 ]
-[; ;L210004 HC.c: 561: }
-[; ;L210004 HC.c: 562: if(last_tx[0] == 'O'){
-"562
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 79 `ui 321  ]
-{
-"564
-}
-[e :U 321 ]
-"565
-}
-[e :U 319 ]
-[; ;L210004 HC.c: 564: }
-[; ;L210004 HC.c: 565: }
-[; ;L210004 HC.c: 567: if(RA6){
-"567
-[e $ ! _RA6 322  ]
-{
-[; ;L210004 HC.c: 568: if(!(--z2_de) && !pwr_on){
-"568
-[e $ ! && ! != =- _z2_de -> 1 `i -> 0 `i ! != -> _pwr_on `i -> -> -> 0 `i `Vuc `i 323  ]
-{
-[; ;L210004 HC.c: 569: if(z2_on && !z2_sent){
-"569
-[e $ ! && != -> _z2_on `i -> -> -> 0 `i `Vuc `i ! != -> _z2_sent `i -> -> -> 0 `i `Vuc `i 324  ]
-{
-[; ;L210004 HC.c: 570: tx_buffer = 'P';
-"570
-[e = _tx_buffer -> -> 80 `ui `uc ]
-[; ;L210004 HC.c: 571: tx_flag = 1;
-"571
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 572: LATA7 = 0;
-"572
-[e = _LATA7 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 573: z2_on = 0;
-"573
-[e = _z2_on -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 574: z2_off = 1;
-"574
-[e = _z2_off -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 575: massage_timeout = 20*60*29.5;
-"575
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-"576
-}
-[; ;L210004 HC.c: 576: }
-[e $U 325  ]
-"577
-[e :U 324 ]
-[; ;L210004 HC.c: 577: else if(z2_off){
-[e $ ! != -> _z2_off `i -> -> -> 0 `i `Vuc `i 326  ]
-{
-[; ;L210004 HC.c: 578: tx_buffer = 'Q';
-"578
-[e = _tx_buffer -> -> 81 `ui `uc ]
-[; ;L210004 HC.c: 579: tx_flag = 1;
-"579
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 580: LATA7 = 1;
-"580
-[e = _LATA7 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 581: z2_off = 0;
-"581
-[e = _z2_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 582: z2_on = 1;
-"582
-[e = _z2_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 583: z2_sent = 1;
-"583
-[e = _z2_sent -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 584: massage_timeout = 20*60*29.5;
-"584
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-"585
-}
-[e :U 326 ]
-"586
-[e :U 325 ]
-}
-[e :U 323 ]
-[; ;L210004 HC.c: 585: }
-[; ;L210004 HC.c: 586: }
-[; ;L210004 HC.c: 587: if((last_tx[0] != 'P') && (z2_on == 0)){
-"587
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 80 `ui == -> _z2_on `i -> 0 `i 327  ]
-{
-"589
-}
-[e :U 327 ]
-[; ;L210004 HC.c: 589: }
-[; ;L210004 HC.c: 590: if((last_tx[0] != 'Q') && (z2_off == 0)){
-"590
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 81 `ui == -> _z2_off `i -> 0 `i 328  ]
-{
-"592
-}
-[e :U 328 ]
-"593
-}
-[; ;L210004 HC.c: 592: }
-[; ;L210004 HC.c: 593: }
-[e $U 329  ]
-"594
-[e :U 322 ]
-[; ;L210004 HC.c: 594: else{
-{
-[; ;L210004 HC.c: 595: z2_de = 200;
-"595
-[e = _z2_de -> 200 `i ]
-[; ;L210004 HC.c: 596: z2_sent = 0;
-"596
-[e = _z2_sent -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 597: if(last_tx[0] == 'P'){
-"597
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 80 `ui 330  ]
-{
-"599
-}
-[e :U 330 ]
-[; ;L210004 HC.c: 599: }
-[; ;L210004 HC.c: 600: if(last_tx[0] == 'Q'){
-"600
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 81 `ui 331  ]
-{
-"602
-}
-[e :U 331 ]
-"603
-}
-[e :U 329 ]
-[; ;L210004 HC.c: 602: }
-[; ;L210004 HC.c: 603: }
-[; ;L210004 HC.c: 605: if(RC5){
-"605
-[e $ ! _RC5 332  ]
-{
-[; ;L210004 HC.c: 606: if(!(--z3_de) && !pwr_on){
-"606
-[e $ ! && ! != =- _z3_de -> 1 `i -> 0 `i ! != -> _pwr_on `i -> -> -> 0 `i `Vuc `i 333  ]
-{
-[; ;L210004 HC.c: 607: if(z3_on && !z3_sent){
-"607
-[e $ ! && != -> _z3_on `i -> -> -> 0 `i `Vuc `i ! != -> _z3_sent `i -> -> -> 0 `i `Vuc `i 334  ]
-{
-[; ;L210004 HC.c: 608: tx_buffer = 'R';
-"608
-[e = _tx_buffer -> -> 82 `ui `uc ]
-[; ;L210004 HC.c: 609: tx_flag = 1;
-"609
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 610: LATC4 = 0;
-"610
-[e = _LATC4 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 611: z3_on = 0;
-"611
-[e = _z3_on -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 612: z3_off = 1;
-"612
-[e = _z3_off -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 613: massage_timeout = 20*60*29.5;
-"613
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-"614
-}
-[; ;L210004 HC.c: 614: }
-[e $U 335  ]
-"615
-[e :U 334 ]
-[; ;L210004 HC.c: 615: else if(z3_off){
-[e $ ! != -> _z3_off `i -> -> -> 0 `i `Vuc `i 336  ]
-{
-[; ;L210004 HC.c: 616: tx_buffer = 'S';
-"616
-[e = _tx_buffer -> -> 83 `ui `uc ]
-[; ;L210004 HC.c: 617: tx_flag = 1;
-"617
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 618: LATC4 = 1;
-"618
-[e = _LATC4 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 619: z3_off = 0;
-"619
-[e = _z3_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 620: z3_on = 1;
-"620
-[e = _z3_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 621: z3_sent = 1;
-"621
-[e = _z3_sent -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 622: massage_timeout = 20*60*29.5;
-"622
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-"623
-}
-[e :U 336 ]
-"624
-[e :U 335 ]
-}
-[e :U 333 ]
-[; ;L210004 HC.c: 623: }
-[; ;L210004 HC.c: 624: }
-[; ;L210004 HC.c: 625: if((last_tx[0] != 'R') && (z3_on == 0)){
-"625
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 82 `ui == -> _z3_on `i -> 0 `i 337  ]
-{
-"627
-}
-[e :U 337 ]
-[; ;L210004 HC.c: 627: }
-[; ;L210004 HC.c: 628: if((last_tx[0] != 'S') && (z3_off == 0)){
-"628
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 83 `ui == -> _z3_off `i -> 0 `i 338  ]
-{
-"630
-}
-[e :U 338 ]
-"631
-}
-[; ;L210004 HC.c: 630: }
-[; ;L210004 HC.c: 631: }
-[e $U 339  ]
-"632
-[e :U 332 ]
-[; ;L210004 HC.c: 632: else{
-{
-[; ;L210004 HC.c: 633: z3_de = 200;
-"633
-[e = _z3_de -> 200 `i ]
-[; ;L210004 HC.c: 634: z3_sent = 0;
-"634
-[e = _z3_sent -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 635: if(last_tx[0] == 'R'){
-"635
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 82 `ui 340  ]
-{
-"637
-}
-[e :U 340 ]
-[; ;L210004 HC.c: 637: }
-[; ;L210004 HC.c: 638: if(last_tx[0] == 'S'){
-"638
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 83 `ui 341  ]
-{
-"640
-}
-[e :U 341 ]
-"641
-}
-[e :U 339 ]
-[; ;L210004 HC.c: 640: }
-[; ;L210004 HC.c: 641: }
-[; ;L210004 HC.c: 643: if(RC3){
-"643
-[e $ ! _RC3 342  ]
-{
-[; ;L210004 HC.c: 644: if(!(--mode_de) && !pwr_on){
-"644
-[e $ ! && ! != =- _mode_de -> 1 `i -> 0 `i ! != -> _pwr_on `i -> -> -> 0 `i `Vuc `i 343  ]
-{
-[; ;L210004 HC.c: 645: mode_state++;
-"645
-[e ++ _mode_state -> 1 `i ]
-[; ;L210004 HC.c: 646: if(mode_state > 3){
-"646
-[e $ ! > _mode_state -> 3 `i 344  ]
-{
-[; ;L210004 HC.c: 647: mode_state = 1;
-"647
-[e = _mode_state -> 1 `i ]
-"648
-}
-[e :U 344 ]
-[; ;L210004 HC.c: 648: }
-[; ;L210004 HC.c: 649: switch(mode_state){
-"649
-[e $U 346  ]
-{
-[; ;L210004 HC.c: 650: case 1:
-"650
-[e :U 347 ]
-[; ;L210004 HC.c: 651: tx_buffer = 'T';
-"651
-[e = _tx_buffer -> -> 84 `ui `uc ]
-[; ;L210004 HC.c: 652: tx_flag = 1;
-"652
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 653: LATC2 = 0;
-"653
-[e = _LATC2 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 654: LATC1 = 1;
-"654
-[e = _LATC1 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 655: LATC0 = 1;
-"655
-[e = _LATC0 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 656: massage_timeout = 20*60*29.5;
-"656
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-[; ;L210004 HC.c: 657: break;
-"657
-[e $U 345  ]
-[; ;L210004 HC.c: 658: case 2:
-"658
-[e :U 348 ]
-[; ;L210004 HC.c: 659: tx_buffer = 'V';
-"659
-[e = _tx_buffer -> -> 86 `ui `uc ]
-[; ;L210004 HC.c: 660: tx_flag = 1;
-"660
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 661: LATC2 = 1;
-"661
-[e = _LATC2 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 662: LATC1 = 0;
-"662
-[e = _LATC1 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 663: LATC0 = 1;
-"663
-[e = _LATC0 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 664: massage_timeout = 20*60*29.5;
-"664
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-[; ;L210004 HC.c: 665: break;
-"665
-[e $U 345  ]
-[; ;L210004 HC.c: 666: case 3:
-"666
-[e :U 349 ]
-[; ;L210004 HC.c: 667: tx_buffer = 'U';
-"667
-[e = _tx_buffer -> -> 85 `ui `uc ]
-[; ;L210004 HC.c: 668: tx_flag = 1;
-"668
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 669: LATC2 = 1;
-"669
-[e = _LATC2 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 670: LATC1 = 1;
-"670
-[e = _LATC1 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 671: LATC0 = 0;
-"671
-[e = _LATC0 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 672: massage_timeout = 20*60*29.5;
-"672
-[e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-[; ;L210004 HC.c: 673: break;
-"673
-[e $U 345  ]
-[; ;L210004 HC.c: 674: default:
-"674
-[e :U 350 ]
-[; ;L210004 HC.c: 675: mode_state = 0;
-"675
-[e = _mode_state -> 0 `i ]
-"676
-}
-[; ;L210004 HC.c: 676: }
-[e $U 345  ]
-"649
-[e :U 346 ]
-[e [\ _mode_state , $ -> 1 `i 347
- , $ -> 2 `i 348
- , $ -> 3 `i 349
- 350 ]
-"676
-[e :U 345 ]
-"677
-}
-[e :U 343 ]
-"678
-}
-[; ;L210004 HC.c: 677: }
-[; ;L210004 HC.c: 678: }
-[e $U 351  ]
-"679
-[e :U 342 ]
-[; ;L210004 HC.c: 679: else{
-{
-[; ;L210004 HC.c: 680: mode_de = 200;
-"680
-[e = _mode_de -> 200 `i ]
-"682
-}
-[e :U 351 ]
-[; ;L210004 HC.c: 682: }
 [; ;L210004 HC.c: 684: if(RB4){
 "684
-[e $ ! _RB4 352  ]
+[e $ ! _RB4 302  ]
 {
 [; ;L210004 HC.c: 685: if(RD1){
 "685
-[e $ ! _RD1 353  ]
+[e $ ! _RD1 303  ]
 {
 "686
 }
 [; ;L210004 HC.c: 686: }
-[e $U 354  ]
+[e $U 304  ]
 "687
-[e :U 353 ]
+[e :U 303 ]
 [; ;L210004 HC.c: 687: else{
 {
 [; ;L210004 HC.c: 688: if(!(--heat_de)){
 "688
-[e $ ! ! != =- _heat_de -> 1 `i -> 0 `i 355  ]
+[e $ ! ! != =- _heat_de -> 1 `i -> 0 `i 305  ]
 {
 [; ;L210004 HC.c: 689: if(heat_on && !heat_sent){
 "689
-[e $ ! && != -> _heat_on `i -> -> -> 0 `i `Vuc `i ! != -> _heat_sent `i -> -> -> 0 `i `Vuc `i 356  ]
+[e $ ! && != -> _heat_on `i -> -> -> 0 `i `Vuc `i ! != -> _heat_sent `i -> -> -> 0 `i `Vuc `i 306  ]
 {
 [; ;L210004 HC.c: 690: tx_buffer = 'W';
 "690
@@ -6314,11 +5694,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "696
 }
 [; ;L210004 HC.c: 696: }
-[e $U 357  ]
+[e $U 307  ]
 "697
-[e :U 356 ]
+[e :U 306 ]
 [; ;L210004 HC.c: 697: else if(heat_off){
-[e $ ! != -> _heat_off `i -> -> -> 0 `i `Vuc `i 358  ]
+[e $ ! != -> _heat_off `i -> -> -> 0 `i `Vuc `i 308  ]
 {
 [; ;L210004 HC.c: 698: tx_buffer = 'X';
 "698
@@ -6340,39 +5720,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _heat_sent -> -> 1 `i `uc ]
 "704
 }
-[e :U 358 ]
+[e :U 308 ]
 "705
-[e :U 357 ]
+[e :U 307 ]
 }
-[e :U 355 ]
+[e :U 305 ]
 "706
 }
-[e :U 354 ]
+[e :U 304 ]
 [; ;L210004 HC.c: 704: }
 [; ;L210004 HC.c: 705: }
 [; ;L210004 HC.c: 706: }
 [; ;L210004 HC.c: 707: if((last_tx[0] != 'W') && (heat_on == 0)){
 "707
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 87 `ui == -> _heat_on `i -> 0 `i 359  ]
+[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 87 `ui == -> _heat_on `i -> 0 `i 309  ]
 {
 "709
 }
-[e :U 359 ]
+[e :U 309 ]
 [; ;L210004 HC.c: 709: }
 [; ;L210004 HC.c: 710: if((last_tx[0] != 'X') && (heat_off == 0)){
 "710
-[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 88 `ui == -> _heat_off `i -> 0 `i 360  ]
+[e $ ! && != -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 88 `ui == -> _heat_off `i -> 0 `i 310  ]
 {
 "712
 }
-[e :U 360 ]
+[e :U 310 ]
 "713
 }
 [; ;L210004 HC.c: 712: }
 [; ;L210004 HC.c: 713: }
-[e $U 361  ]
+[e $U 311  ]
 "714
-[e :U 352 ]
+[e :U 302 ]
 [; ;L210004 HC.c: 714: else{
 {
 [; ;L210004 HC.c: 715: heat_de = 200;
@@ -6383,35 +5763,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _heat_sent -> -> 0 `i `uc ]
 [; ;L210004 HC.c: 717: if(last_tx[0] == 'W'){
 "717
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 87 `ui 362  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 87 `ui 312  ]
 {
 "719
 }
-[e :U 362 ]
+[e :U 312 ]
 [; ;L210004 HC.c: 719: }
 [; ;L210004 HC.c: 720: if(last_tx[0] == 'X'){
 "720
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 88 `ui 363  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 88 `ui 313  ]
 {
 "722
 }
-[e :U 363 ]
+[e :U 313 ]
 "723
 }
-[e :U 361 ]
+[e :U 311 ]
 [; ;L210004 HC.c: 722: }
 [; ;L210004 HC.c: 723: }
 [; ;L210004 HC.c: 725: if(RD1){
 "725
-[e $ ! _RD1 364  ]
+[e $ ! _RD1 314  ]
 {
 [; ;L210004 HC.c: 726: if(!(--power_de)){
 "726
-[e $ ! ! != =- _power_de -> 1 `i -> 0 `i 365  ]
+[e $ ! ! != =- _power_de -> 1 `i -> 0 `i 315  ]
 {
 [; ;L210004 HC.c: 727: if(pwr_on && !pwr_sent){
 "727
-[e $ ! && != -> _pwr_on `i -> -> -> 0 `i `Vuc `i ! != -> _pwr_sent `i -> -> -> 0 `i `Vuc `i 366  ]
+[e $ ! && != -> _pwr_on `i -> -> -> 0 `i `Vuc `i ! != -> _pwr_sent `i -> -> -> 0 `i `Vuc `i 316  ]
 {
 [; ;L210004 HC.c: 728: tx_buffer = 'A';
 "728
@@ -6431,69 +5811,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;L210004 HC.c: 733: massage_timeout = 20*60*29.5;
 "733
 [e = _massage_timeout -> * -> * -> 20 `i -> 60 `i `d .29.5 `i ]
-[; ;L210004 HC.c: 734: if(mode_state == 1){
-"734
-[e $ ! == _mode_state -> 1 `i 367  ]
-{
-[; ;L210004 HC.c: 735: LATC2 = 0;
-"735
-[e = _LATC2 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 736: LATC1 = 1;
-"736
-[e = _LATC1 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 737: LATC0 = 1;
-"737
-[e = _LATC0 -> -> 1 `i `b ]
-"738
-}
-[; ;L210004 HC.c: 738: }
-[e $U 368  ]
-"739
-[e :U 367 ]
-[; ;L210004 HC.c: 739: else if(mode_state == 2){
-[e $ ! == _mode_state -> 2 `i 369  ]
-{
-[; ;L210004 HC.c: 740: LATC2 = 1;
-"740
-[e = _LATC2 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 741: LATC1 = 0;
-"741
-[e = _LATC1 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 742: LATC0 = 1;
-"742
-[e = _LATC0 -> -> 1 `i `b ]
-"743
-}
-[; ;L210004 HC.c: 743: }
-[e $U 370  ]
-"744
-[e :U 369 ]
-[; ;L210004 HC.c: 744: else if(mode_state == 3){
-[e $ ! == _mode_state -> 3 `i 371  ]
-{
-[; ;L210004 HC.c: 745: LATC2 = 1;
-"745
-[e = _LATC2 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 746: LATC1 = 1;
-"746
-[e = _LATC1 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 747: LATC0 = 0;
-"747
-[e = _LATC0 -> -> 0 `i `b ]
-"748
-}
-[e :U 371 ]
 "749
-[e :U 370 ]
-[e :U 368 ]
 }
-[; ;L210004 HC.c: 748: }
 [; ;L210004 HC.c: 749: }
-[e $U 372  ]
+[e $U 317  ]
 "750
-[e :U 366 ]
+[e :U 316 ]
 [; ;L210004 HC.c: 750: else if(pwr_off){
-[e $ ! != -> _pwr_off `i -> -> -> 0 `i `Vuc `i 373  ]
+[e $ ! != -> _pwr_off `i -> -> -> 0 `i `Vuc `i 318  ]
 {
 [; ;L210004 HC.c: 751: tx_buffer = 'B';
 "751
@@ -6527,19 +5852,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mode_state -> 1 `i ]
 "761
 }
-[e :U 373 ]
+[e :U 318 ]
 "762
-[e :U 372 ]
+[e :U 317 ]
 }
-[e :U 365 ]
+[e :U 315 ]
 "763
 }
 [; ;L210004 HC.c: 761: }
 [; ;L210004 HC.c: 762: }
 [; ;L210004 HC.c: 763: }
-[e $U 374  ]
+[e $U 319  ]
 "764
-[e :U 364 ]
+[e :U 314 ]
 [; ;L210004 HC.c: 764: else{
 {
 [; ;L210004 HC.c: 765: power_de = 200;
@@ -6550,65 +5875,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _pwr_sent -> -> 0 `i `uc ]
 [; ;L210004 HC.c: 767: if((last_tx[0]=='B')||(last_tx[0]=='J')){
 "767
-[e $ ! || == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 66 `ui == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 74 `ui 375  ]
+[e $ ! || == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 66 `ui == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 74 `ui 320  ]
 {
 "769
 }
 [; ;L210004 HC.c: 769: }
-[e $U 376  ]
+[e $U 321  ]
 "770
-[e :U 375 ]
+[e :U 320 ]
 [; ;L210004 HC.c: 770: else if(last_tx[0] == 'A'){
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 65 `ui 377  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 65 `ui 322  ]
 {
 "772
 }
-[e :U 377 ]
+[e :U 322 ]
 "773
-[e :U 376 ]
+[e :U 321 ]
 }
-[e :U 374 ]
+[e :U 319 ]
 [; ;L210004 HC.c: 772: }
 [; ;L210004 HC.c: 773: }
-[; ;L210004 HC.c: 774: if((LATD0 == 0)&&(LATD4 == 1)&&(LATD2 == 1)&&(LATA7 == 1)&&(LATC4 == 1)){
-"774
-[e $ ! && && && && == -> _LATD0 `i -> 0 `i == -> _LATD4 `i -> 1 `i == -> _LATD2 `i -> 1 `i == -> _LATA7 `i -> 1 `i == -> _LATC4 `i -> 1 `i 378  ]
-{
-[; ;L210004 HC.c: 775: tx_buffer = 'B';
-"775
-[e = _tx_buffer -> -> 66 `ui `uc ]
-[; ;L210004 HC.c: 776: tx_flag = 1;
-"776
-[e = _tx_flag -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 777: hc_led_off();
-"777
-[e ( _hc_led_off ..  ]
-[; ;L210004 HC.c: 778: LATA3 = 1;
-"778
-[e = _LATA3 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 779: heat_on = 1;
-"779
-[e = _heat_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 780: heat_off = 0;
-"780
-[e = _heat_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 781: pwr_off = 0;
-"781
-[e = _pwr_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 782: pwr_on = 1;
-"782
-[e = _pwr_on -> -> 1 `i `uc ]
-"783
-}
-[e :U 378 ]
-[; ;L210004 HC.c: 783: }
 [; ;L210004 HC.c: 790: if(lum_btn_op){
 "790
-[e $ ! != -> _lum_btn_op `i -> -> -> 0 `i `Vuc `i 379  ]
+[e $ ! != -> _lum_btn_op `i -> -> -> 0 `i `Vuc `i 323  ]
 {
 [; ;L210004 HC.c: 791: if(last_tx[0] == 'I'){
 "791
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 73 `ui 380  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 73 `ui 324  ]
 {
 [; ;L210004 HC.c: 792: lum_op_sent = 1;
 "792
@@ -6616,9 +5909,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "793
 }
 [; ;L210004 HC.c: 793: }
-[e $U 381  ]
+[e $U 325  ]
 "794
-[e :U 380 ]
+[e :U 324 ]
 [; ;L210004 HC.c: 794: else{
 {
 [; ;L210004 HC.c: 795: lum_op_sent = 0;
@@ -6626,11 +5919,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _lum_op_sent -> -> 0 `i `uc ]
 "796
 }
-[e :U 381 ]
+[e :U 325 ]
 [; ;L210004 HC.c: 796: }
 [; ;L210004 HC.c: 797: if(!lum_op_sent){
 "797
-[e $ ! ! != -> _lum_op_sent `i -> -> -> 0 `i `Vuc `i 382  ]
+[e $ ! ! != -> _lum_op_sent `i -> -> -> 0 `i `Vuc `i 326  ]
 {
 [; ;L210004 HC.c: 798: tx_buffer = 'I';
 "798
@@ -6655,19 +5948,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mode_state -> 1 `i ]
 "805
 }
-[e :U 382 ]
+[e :U 326 ]
 "806
 }
 [; ;L210004 HC.c: 805: }
 [; ;L210004 HC.c: 806: }
-[e $U 383  ]
+[e $U 327  ]
 "807
-[e :U 379 ]
+[e :U 323 ]
 [; ;L210004 HC.c: 807: else{
 {
 [; ;L210004 HC.c: 808: if(lum_op_sent){
 "808
-[e $ ! != -> _lum_op_sent `i -> -> -> 0 `i `Vuc `i 384  ]
+[e $ ! != -> _lum_op_sent `i -> -> -> 0 `i `Vuc `i 328  ]
 {
 [; ;L210004 HC.c: 809: tx_buffer = 'K';
 "809
@@ -6686,19 +5979,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _lum_op_sent -> -> 0 `i `uc ]
 "815
 }
-[e :U 384 ]
+[e :U 328 ]
 "816
 }
-[e :U 383 ]
+[e :U 327 ]
 [; ;L210004 HC.c: 815: }
 [; ;L210004 HC.c: 816: }
 [; ;L210004 HC.c: 818: if(lum_btn_cl){
 "818
-[e $ ! != -> _lum_btn_cl `i -> -> -> 0 `i `Vuc `i 385  ]
+[e $ ! != -> _lum_btn_cl `i -> -> -> 0 `i `Vuc `i 329  ]
 {
 [; ;L210004 HC.c: 819: if(last_tx[0] == 'J'){
 "819
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 74 `ui 386  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 74 `ui 330  ]
 {
 [; ;L210004 HC.c: 820: lum_cl_sent = 1;
 "820
@@ -6706,9 +5999,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "821
 }
 [; ;L210004 HC.c: 821: }
-[e $U 387  ]
+[e $U 331  ]
 "822
-[e :U 386 ]
+[e :U 330 ]
 [; ;L210004 HC.c: 822: else{
 {
 [; ;L210004 HC.c: 823: lum_cl_sent = 0;
@@ -6716,11 +6009,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _lum_cl_sent -> -> 0 `i `uc ]
 "824
 }
-[e :U 387 ]
+[e :U 331 ]
 [; ;L210004 HC.c: 824: }
 [; ;L210004 HC.c: 825: if(!lum_cl_sent){
 "825
-[e $ ! ! != -> _lum_cl_sent `i -> -> -> 0 `i `Vuc `i 388  ]
+[e $ ! ! != -> _lum_cl_sent `i -> -> -> 0 `i `Vuc `i 332  ]
 {
 [; ;L210004 HC.c: 826: tx_buffer = 'J';
 "826
@@ -6742,19 +6035,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mode_state -> 1 `i ]
 "833
 }
-[e :U 388 ]
+[e :U 332 ]
 "834
 }
 [; ;L210004 HC.c: 833: }
 [; ;L210004 HC.c: 834: }
-[e $U 389  ]
+[e $U 333  ]
 "835
-[e :U 385 ]
+[e :U 329 ]
 [; ;L210004 HC.c: 835: else{
 {
 [; ;L210004 HC.c: 836: if(lum_cl_sent){
 "836
-[e $ ! != -> _lum_cl_sent `i -> -> -> 0 `i `Vuc `i 390  ]
+[e $ ! != -> _lum_cl_sent `i -> -> -> 0 `i `Vuc `i 334  ]
 {
 [; ;L210004 HC.c: 837: tx_buffer = 'K';
 "837
@@ -6770,19 +6063,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _lum_cl_sent -> -> 0 `i `uc ]
 "842
 }
-[e :U 390 ]
+[e :U 334 ]
 "843
 }
-[e :U 389 ]
+[e :U 333 ]
 [; ;L210004 HC.c: 842: }
 [; ;L210004 HC.c: 843: }
 [; ;L210004 HC.c: 845: if(hr_btn_op){
 "845
-[e $ ! != -> _hr_btn_op `i -> -> -> 0 `i `Vuc `i 391  ]
+[e $ ! != -> _hr_btn_op `i -> -> -> 0 `i `Vuc `i 335  ]
 {
 [; ;L210004 HC.c: 846: if(last_tx[0] == 'F'){
 "846
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 70 `ui 392  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 70 `ui 336  ]
 {
 [; ;L210004 HC.c: 847: hr_op_sent = 1;
 "847
@@ -6790,9 +6083,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "848
 }
 [; ;L210004 HC.c: 848: }
-[e $U 393  ]
+[e $U 337  ]
 "849
-[e :U 392 ]
+[e :U 336 ]
 [; ;L210004 HC.c: 849: else{
 {
 [; ;L210004 HC.c: 850: hr_op_sent = 0;
@@ -6800,11 +6093,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _hr_op_sent -> -> 0 `i `uc ]
 "851
 }
-[e :U 393 ]
+[e :U 337 ]
 [; ;L210004 HC.c: 851: }
 [; ;L210004 HC.c: 852: if(!hr_op_sent){
 "852
-[e $ ! ! != -> _hr_op_sent `i -> -> -> 0 `i `Vuc `i 394  ]
+[e $ ! ! != -> _hr_op_sent `i -> -> -> 0 `i `Vuc `i 338  ]
 {
 [; ;L210004 HC.c: 853: tx_buffer = 'F';
 "853
@@ -6817,19 +6110,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _SWDTEN -> -> 0 `i `b ]
 "857
 }
-[e :U 394 ]
+[e :U 338 ]
 "858
 }
 [; ;L210004 HC.c: 857: }
 [; ;L210004 HC.c: 858: }
-[e $U 395  ]
+[e $U 339  ]
 "859
-[e :U 391 ]
+[e :U 335 ]
 [; ;L210004 HC.c: 859: else{
 {
 [; ;L210004 HC.c: 860: if(hr_op_sent){
 "860
-[e $ ! != -> _hr_op_sent `i -> -> -> 0 `i `Vuc `i 396  ]
+[e $ ! != -> _hr_op_sent `i -> -> -> 0 `i `Vuc `i 340  ]
 {
 [; ;L210004 HC.c: 861: tx_buffer = 'H';
 "861
@@ -6845,19 +6138,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _hr_op_sent -> -> 0 `i `uc ]
 "866
 }
-[e :U 396 ]
+[e :U 340 ]
 "867
 }
-[e :U 395 ]
+[e :U 339 ]
 [; ;L210004 HC.c: 866: }
 [; ;L210004 HC.c: 867: }
 [; ;L210004 HC.c: 869: if(hr_btn_cl){
 "869
-[e $ ! != -> _hr_btn_cl `i -> -> -> 0 `i `Vuc `i 397  ]
+[e $ ! != -> _hr_btn_cl `i -> -> -> 0 `i `Vuc `i 341  ]
 {
 [; ;L210004 HC.c: 870: if(last_tx[0] == 'G'){
 "870
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 71 `ui 398  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 71 `ui 342  ]
 {
 [; ;L210004 HC.c: 871: hr_cl_sent = 1;
 "871
@@ -6865,9 +6158,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "872
 }
 [; ;L210004 HC.c: 872: }
-[e $U 399  ]
+[e $U 343  ]
 "873
-[e :U 398 ]
+[e :U 342 ]
 [; ;L210004 HC.c: 873: else{
 {
 [; ;L210004 HC.c: 874: hr_cl_sent = 0;
@@ -6875,11 +6168,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _hr_cl_sent -> -> 0 `i `uc ]
 "875
 }
-[e :U 399 ]
+[e :U 343 ]
 [; ;L210004 HC.c: 875: }
 [; ;L210004 HC.c: 876: if(!hr_cl_sent){
 "876
-[e $ ! ! != -> _hr_cl_sent `i -> -> -> 0 `i `Vuc `i 400  ]
+[e $ ! ! != -> _hr_cl_sent `i -> -> -> 0 `i `Vuc `i 344  ]
 {
 [; ;L210004 HC.c: 877: tx_buffer = 'G';
 "877
@@ -6892,19 +6185,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _SWDTEN -> -> 0 `i `b ]
 "881
 }
-[e :U 400 ]
+[e :U 344 ]
 "882
 }
 [; ;L210004 HC.c: 881: }
 [; ;L210004 HC.c: 882: }
-[e $U 401  ]
+[e $U 345  ]
 "883
-[e :U 397 ]
+[e :U 341 ]
 [; ;L210004 HC.c: 883: else{
 {
 [; ;L210004 HC.c: 884: if(hr_cl_sent){
 "884
-[e $ ! != -> _hr_cl_sent `i -> -> -> 0 `i `Vuc `i 402  ]
+[e $ ! != -> _hr_cl_sent `i -> -> -> 0 `i `Vuc `i 346  ]
 {
 [; ;L210004 HC.c: 885: tx_buffer = 'H';
 "885
@@ -6920,19 +6213,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _hr_cl_sent -> -> 0 `i `uc ]
 "890
 }
-[e :U 402 ]
+[e :U 346 ]
 "891
 }
-[e :U 401 ]
+[e :U 345 ]
 [; ;L210004 HC.c: 890: }
 [; ;L210004 HC.c: 891: }
 [; ;L210004 HC.c: 893: if(pr_btn_op){
 "893
-[e $ ! != -> _pr_btn_op `i -> -> -> 0 `i `Vuc `i 403  ]
+[e $ ! != -> _pr_btn_op `i -> -> -> 0 `i `Vuc `i 347  ]
 {
 [; ;L210004 HC.c: 894: if(last_tx[0] == 'C'){
 "894
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 67 `ui 404  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 67 `ui 348  ]
 {
 [; ;L210004 HC.c: 895: pr_op_sent = 1;
 "895
@@ -6940,9 +6233,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "896
 }
 [; ;L210004 HC.c: 896: }
-[e $U 405  ]
+[e $U 349  ]
 "897
-[e :U 404 ]
+[e :U 348 ]
 [; ;L210004 HC.c: 897: else{
 {
 [; ;L210004 HC.c: 898: pr_op_sent = 0;
@@ -6950,11 +6243,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _pr_op_sent -> -> 0 `i `uc ]
 "899
 }
-[e :U 405 ]
+[e :U 349 ]
 [; ;L210004 HC.c: 899: }
 [; ;L210004 HC.c: 900: if(!pr_op_sent){
 "900
-[e $ ! ! != -> _pr_op_sent `i -> -> -> 0 `i `Vuc `i 406  ]
+[e $ ! ! != -> _pr_op_sent `i -> -> -> 0 `i `Vuc `i 350  ]
 {
 [; ;L210004 HC.c: 901: tx_buffer = 'C';
 "901
@@ -6967,19 +6260,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _SWDTEN -> -> 0 `i `b ]
 "905
 }
-[e :U 406 ]
+[e :U 350 ]
 "906
 }
 [; ;L210004 HC.c: 905: }
 [; ;L210004 HC.c: 906: }
-[e $U 407  ]
+[e $U 351  ]
 "907
-[e :U 403 ]
+[e :U 347 ]
 [; ;L210004 HC.c: 907: else{
 {
 [; ;L210004 HC.c: 908: if(pr_op_sent){
 "908
-[e $ ! != -> _pr_op_sent `i -> -> -> 0 `i `Vuc `i 408  ]
+[e $ ! != -> _pr_op_sent `i -> -> -> 0 `i `Vuc `i 352  ]
 {
 [; ;L210004 HC.c: 909: tx_buffer = 'E';
 "909
@@ -6995,19 +6288,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _pr_op_sent -> -> 0 `i `uc ]
 "914
 }
-[e :U 408 ]
+[e :U 352 ]
 "915
 }
-[e :U 407 ]
+[e :U 351 ]
 [; ;L210004 HC.c: 914: }
 [; ;L210004 HC.c: 915: }
 [; ;L210004 HC.c: 917: if(pr_btn_cl){
 "917
-[e $ ! != -> _pr_btn_cl `i -> -> -> 0 `i `Vuc `i 409  ]
+[e $ ! != -> _pr_btn_cl `i -> -> -> 0 `i `Vuc `i 353  ]
 {
 [; ;L210004 HC.c: 918: if(last_tx[0] == 'D'){
 "918
-[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 68 `ui 410  ]
+[e $ ! == -> *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui -> 68 `ui 354  ]
 {
 [; ;L210004 HC.c: 919: pr_cl_sent = 1;
 "919
@@ -7015,9 +6308,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "920
 }
 [; ;L210004 HC.c: 920: }
-[e $U 411  ]
+[e $U 355  ]
 "921
-[e :U 410 ]
+[e :U 354 ]
 [; ;L210004 HC.c: 921: else{
 {
 [; ;L210004 HC.c: 922: pr_cl_sent = 0;
@@ -7025,11 +6318,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _pr_cl_sent -> -> 0 `i `uc ]
 "923
 }
-[e :U 411 ]
+[e :U 355 ]
 [; ;L210004 HC.c: 923: }
 [; ;L210004 HC.c: 924: if(!pr_cl_sent){
 "924
-[e $ ! ! != -> _pr_cl_sent `i -> -> -> 0 `i `Vuc `i 412  ]
+[e $ ! ! != -> _pr_cl_sent `i -> -> -> 0 `i `Vuc `i 356  ]
 {
 [; ;L210004 HC.c: 925: tx_buffer = 'D';
 "925
@@ -7042,19 +6335,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _SWDTEN -> -> 0 `i `b ]
 "929
 }
-[e :U 412 ]
+[e :U 356 ]
 "930
 }
 [; ;L210004 HC.c: 929: }
 [; ;L210004 HC.c: 930: }
-[e $U 413  ]
+[e $U 357  ]
 "931
-[e :U 409 ]
+[e :U 353 ]
 [; ;L210004 HC.c: 931: else{
 {
 [; ;L210004 HC.c: 932: if(pr_cl_sent){
 "932
-[e $ ! != -> _pr_cl_sent `i -> -> -> 0 `i `Vuc `i 414  ]
+[e $ ! != -> _pr_cl_sent `i -> -> -> 0 `i `Vuc `i 358  ]
 {
 [; ;L210004 HC.c: 933: tx_buffer = 'E';
 "933
@@ -7070,15 +6363,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _pr_cl_sent -> -> 0 `i `uc ]
 "938
 }
-[e :U 414 ]
+[e :U 358 ]
 "939
 }
-[e :U 413 ]
+[e :U 357 ]
 [; ;L210004 HC.c: 938: }
 [; ;L210004 HC.c: 939: }
 [; ;L210004 HC.c: 941: if(safety < 20*7*20){
 "941
-[e $ ! < _safety * * -> 20 `i -> 7 `i -> 20 `i 415  ]
+[e $ ! < _safety * * -> 20 `i -> 7 `i -> 20 `i 359  ]
 {
 [; ;L210004 HC.c: 942: ++safety;
 "942
@@ -7086,9 +6379,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "946
 }
 [; ;L210004 HC.c: 946: }
-[e $U 416  ]
+[e $U 360  ]
 "947
-[e :U 415 ]
+[e :U 359 ]
 [; ;L210004 HC.c: 947: else{
 {
 [; ;L210004 HC.c: 948: safety = 0;
@@ -7096,14 +6389,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _safety -> 0 `i ]
 [; ;L210004 HC.c: 949: if(RE0 || RB1 || RA5 || RA4 || RB2 || RB3){
 "949
-[e $ ! || || || || || _RE0 _RB1 _RA5 _RA4 _RB2 _RB3 417  ]
+[e $ ! || || || || || _RE0 _RB1 _RA5 _RA4 _RB2 _RB3 361  ]
 {
 "950
 }
 [; ;L210004 HC.c: 950: }
-[e $U 418  ]
+[e $U 362  ]
 "951
-[e :U 417 ]
+[e :U 361 ]
 [; ;L210004 HC.c: 951: else{
 {
 [; ;L210004 HC.c: 952: tx_buffer = 'Y';
@@ -7114,15 +6407,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _tx_flag -> -> 1 `i `uc ]
 "954
 }
-[e :U 418 ]
+[e :U 362 ]
 "955
 }
-[e :U 416 ]
+[e :U 360 ]
 [; ;L210004 HC.c: 954: }
 [; ;L210004 HC.c: 955: }
 [; ;L210004 HC.c: 960: if(tx_flag){
 "960
-[e $ ! != -> _tx_flag `i -> -> -> 0 `i `Vuc `i 419  ]
+[e $ ! != -> _tx_flag `i -> -> -> 0 `i `Vuc `i 363  ]
 {
 "961
 [v _echo `uc  1 a ]
@@ -7130,7 +6423,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _echo -> -> 1 `i `uc ]
 [; ;L210004 HC.c: 962: do{
 "962
-[e :U 422 ]
+[e :U 366 ]
 {
 "963
 [v _c `i  1 a ]
@@ -7141,9 +6434,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `ui  1 a ]
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i / -> # _last_tx `ui -> # *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui 423  ]
-[e $U 424  ]
-[e :U 423 ]
+[e $ < _i / -> # _last_tx `ui -> # *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui 367  ]
+[e $U 368  ]
+[e :U 367 ]
 {
 [; ;L210004 HC.c: 965: putch(tx_buffer);
 "965
@@ -7158,8 +6451,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "964
 [e =+ _i -> -> 1 `i `ui ]
-[e $ < _i / -> # _last_tx `ui -> # *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui 423  ]
-[e :U 424 ]
+[e $ < _i / -> # _last_tx `ui -> # *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui 367  ]
+[e :U 368 ]
 "968
 }
 [; ;L210004 HC.c: 968: }
@@ -7168,9 +6461,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `ui  1 a ]
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i / -> # _rx_char `ui -> # *U + &U _rx_char * -> -> -> 0 `i `ui `ux -> -> # *U &U _rx_char `ui `ux `ui 426  ]
-[e $U 427  ]
-[e :U 426 ]
+[e $ < _i / -> # _rx_char `ui -> # *U + &U _rx_char * -> -> -> 0 `i `ui `ux -> -> # *U &U _rx_char `ui `ux `ui 370  ]
+[e $U 371  ]
+[e :U 370 ]
 {
 [; ;L210004 HC.c: 970: rx_char[i] = getch();
 "970
@@ -7182,8 +6475,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "969
 [e =+ _i -> -> 1 `i `ui ]
-[e $ < _i / -> # _rx_char `ui -> # *U + &U _rx_char * -> -> -> 0 `i `ui `ux -> -> # *U &U _rx_char `ui `ux `ui 426  ]
-[e :U 427 ]
+[e $ < _i / -> # _rx_char `ui -> # *U + &U _rx_char * -> -> -> 0 `i `ui `ux -> -> # *U &U _rx_char `ui `ux `ui 370  ]
+[e :U 371 ]
 "972
 }
 [; ;L210004 HC.c: 972: }
@@ -7192,33 +6485,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [v _i `ui  1 a ]
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i / -> # _last_tx `ui -> # *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui 429  ]
-[e $U 430  ]
-[e :U 429 ]
+[e $ < _i / -> # _last_tx `ui -> # *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui 373  ]
+[e $U 374  ]
+[e :U 373 ]
 {
 [; ;L210004 HC.c: 974: if(last_tx[i] == rx_char[i]){
 "974
-[e $ ! == -> *U + &U _last_tx * -> _i `ux -> -> # *U &U _last_tx `ui `ux `i -> *U + &U _rx_char * -> _i `ux -> -> # *U &U _rx_char `ui `ux `i 432  ]
+[e $ ! == -> *U + &U _last_tx * -> _i `ux -> -> # *U &U _last_tx `ui `ux `i -> *U + &U _rx_char * -> _i `ux -> -> # *U &U _rx_char `ui `ux `i 376  ]
 {
 [; ;L210004 HC.c: 975: c++;
 "975
 [e ++ _c -> 1 `i ]
 "976
 }
-[e :U 432 ]
+[e :U 376 ]
 "977
 }
 "973
 [e =+ _i -> -> 1 `i `ui ]
-[e $ < _i / -> # _last_tx `ui -> # *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui 429  ]
-[e :U 430 ]
+[e $ < _i / -> # _last_tx `ui -> # *U + &U _last_tx * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_tx `ui `ux `ui 373  ]
+[e :U 374 ]
 "977
 }
 [; ;L210004 HC.c: 976: }
 [; ;L210004 HC.c: 977: }
 [; ;L210004 HC.c: 978: if(c == 5){
 "978
-[e $ ! == _c -> 5 `i 433  ]
+[e $ ! == _c -> 5 `i 377  ]
 {
 [; ;L210004 HC.c: 979: echo = 0;
 "979
@@ -7228,19 +6521,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _putch (1 -> -> 43 `ui `uc ]
 "981
 }
-[e :U 433 ]
+[e :U 377 ]
 "982
 }
 [; ;L210004 HC.c: 981: }
 [; ;L210004 HC.c: 982: }while(echo);
-[e $ != -> _echo `i -> -> -> 0 `i `uc `i 422  ]
-[e :U 421 ]
+[e $ != -> _echo `i -> -> -> 0 `i `uc `i 366  ]
+[e :U 365 ]
 [; ;L210004 HC.c: 983: tx_flag = 0;
 "983
 [e = _tx_flag -> -> 0 `i `uc ]
 "984
 }
-[e :U 419 ]
+[e :U 363 ]
 "985
 }
 [e :U 298 ]
@@ -7262,509 +6555,470 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;L210004 HC.c: 989: if(TMR0IF){
 "989
-[e $ ! _TMR0IF 435  ]
+[e $ ! _TMR0IF 379  ]
 {
 [; ;L210004 HC.c: 1002: if(RE0){
 "1002
-[e $ ! _RE0 436  ]
+[e $ ! _RE0 380  ]
 {
-[; ;L210004 HC.c: 1003: if(RB1 || RA5 || RA4 || RB2 || RB3 ||
-[; ;L210004 HC.c: 1004: RD5 || RD3 || RA6 || RC5 || RB4 || RC3 || RD1){
+[; ;L210004 HC.c: 1003: if(RB1 || RA5 || RA4 || RB2 || RB3 || RB4 || RD1){
+"1003
+[e $ ! || || || || || || _RB1 _RA5 _RA4 _RB2 _RB3 _RB4 _RD1 381  ]
+{
 "1004
-[e $ ! || || || || || || || || || || || _RB1 _RA5 _RA4 _RB2 _RB3 _RD5 _RD3 _RA6 _RC5 _RB4 _RC3 _RD1 437  ]
-{
-"1005
 }
-[; ;L210004 HC.c: 1005: }
-[e $U 438  ]
-"1006
-[e :U 437 ]
-[; ;L210004 HC.c: 1006: else{
+[; ;L210004 HC.c: 1004: }
+[e $U 382  ]
+"1005
+[e :U 381 ]
+[; ;L210004 HC.c: 1005: else{
 {
-[; ;L210004 HC.c: 1007: lum_btn_op = 1;
-"1007
+[; ;L210004 HC.c: 1006: lum_btn_op = 1;
+"1006
 [e = _lum_btn_op -> -> 1 `i `uc ]
+"1007
+}
+[e :U 382 ]
 "1008
 }
-[e :U 438 ]
-"1009
-}
+[; ;L210004 HC.c: 1007: }
 [; ;L210004 HC.c: 1008: }
-[; ;L210004 HC.c: 1009: }
-[e $U 439  ]
+[e $U 383  ]
+"1009
+[e :U 380 ]
+[; ;L210004 HC.c: 1009: else{
+{
+[; ;L210004 HC.c: 1010: lum_btn_op = 0;
 "1010
-[e :U 436 ]
-[; ;L210004 HC.c: 1010: else{
-{
-[; ;L210004 HC.c: 1011: lum_btn_op = 0;
-"1011
 [e = _lum_btn_op -> -> 0 `i `uc ]
-"1012
+"1011
 }
-[e :U 439 ]
-[; ;L210004 HC.c: 1012: }
-[; ;L210004 HC.c: 1014: if(RB1){
+[e :U 383 ]
+[; ;L210004 HC.c: 1011: }
+[; ;L210004 HC.c: 1013: if(RB1){
+"1013
+[e $ ! _RB1 384  ]
+{
+[; ;L210004 HC.c: 1014: if(RE0 || RA5 || RA4 || RB2 || RB3 || RB4 || RD1){
 "1014
-[e $ ! _RB1 440  ]
+[e $ ! || || || || || || _RE0 _RA5 _RA4 _RB2 _RB3 _RB4 _RD1 385  ]
 {
-[; ;L210004 HC.c: 1015: if(RE0 || RA5 || RA4 || RB2 || RB3 ||
-[; ;L210004 HC.c: 1016: RD5 || RD3 || RA6 || RC5 || RB4 || RC3 || RD1){
+"1015
+}
+[; ;L210004 HC.c: 1015: }
+[e $U 386  ]
 "1016
-[e $ ! || || || || || || || || || || || _RE0 _RA5 _RA4 _RB2 _RB3 _RD5 _RD3 _RA6 _RC5 _RB4 _RC3 _RD1 441  ]
+[e :U 385 ]
+[; ;L210004 HC.c: 1016: else{
 {
+[; ;L210004 HC.c: 1017: lum_btn_cl = 1;
 "1017
-}
-[; ;L210004 HC.c: 1017: }
-[e $U 442  ]
-"1018
-[e :U 441 ]
-[; ;L210004 HC.c: 1018: else{
-{
-[; ;L210004 HC.c: 1019: lum_btn_cl = 1;
-"1019
 [e = _lum_btn_cl -> -> 1 `i `uc ]
+"1018
+}
+[e :U 386 ]
+"1019
+}
+[; ;L210004 HC.c: 1018: }
+[; ;L210004 HC.c: 1019: }
+[e $U 387  ]
 "1020
-}
-[e :U 442 ]
+[e :U 384 ]
+[; ;L210004 HC.c: 1020: else{
+{
+[; ;L210004 HC.c: 1021: lum_btn_cl = 0;
 "1021
-}
-[; ;L210004 HC.c: 1020: }
-[; ;L210004 HC.c: 1021: }
-[e $U 443  ]
-"1022
-[e :U 440 ]
-[; ;L210004 HC.c: 1022: else{
-{
-[; ;L210004 HC.c: 1023: lum_btn_cl = 0;
-"1023
 [e = _lum_btn_cl -> -> 0 `i `uc ]
-"1024
+"1022
 }
-[e :U 443 ]
-[; ;L210004 HC.c: 1024: }
-[; ;L210004 HC.c: 1026: if(RA5){
+[e :U 387 ]
+[; ;L210004 HC.c: 1022: }
+[; ;L210004 HC.c: 1024: if(RA5){
+"1024
+[e $ ! _RA5 388  ]
+{
+[; ;L210004 HC.c: 1025: if(RB2 || RA4 || RB3 || RE0 || RB1 || RB4 || RD1){
+"1025
+[e $ ! || || || || || || _RB2 _RA4 _RB3 _RE0 _RB1 _RB4 _RD1 389  ]
+{
 "1026
-[e $ ! _RA5 444  ]
+}
+[; ;L210004 HC.c: 1026: }
+[e $U 390  ]
+"1027
+[e :U 389 ]
+[; ;L210004 HC.c: 1027: else{
 {
-[; ;L210004 HC.c: 1027: if(RB2 || RA4 || RB3 || RE0 || RB1 ||
-[; ;L210004 HC.c: 1028: RD5 || RD3 || RA6 || RC5 || RB4 || RC3 || RD1){
+[; ;L210004 HC.c: 1028: pr_btn_op = 1;
 "1028
-[e $ ! || || || || || || || || || || || _RB2 _RA4 _RB3 _RE0 _RB1 _RD5 _RD3 _RA6 _RC5 _RB4 _RC3 _RD1 445  ]
-{
+[e = _pr_btn_op -> -> 1 `i `uc ]
 "1029
 }
-[; ;L210004 HC.c: 1029: }
-[e $U 446  ]
+[e :U 390 ]
 "1030
-[e :U 445 ]
-[; ;L210004 HC.c: 1030: else{
-{
-[; ;L210004 HC.c: 1031: pr_btn_op = 1;
-"1031
-[e = _pr_btn_op -> -> 1 `i `uc ]
-"1032
 }
-[e :U 446 ]
+[; ;L210004 HC.c: 1029: }
+[; ;L210004 HC.c: 1030: }
+[e $U 391  ]
+"1031
+[e :U 388 ]
+[; ;L210004 HC.c: 1031: else{
+{
+[; ;L210004 HC.c: 1032: pr_btn_op = 0;
+"1032
+[e = _pr_btn_op -> -> 0 `i `uc ]
 "1033
 }
-[; ;L210004 HC.c: 1032: }
+[e :U 391 ]
 [; ;L210004 HC.c: 1033: }
-[e $U 447  ]
-"1034
-[e :U 444 ]
-[; ;L210004 HC.c: 1034: else{
-{
-[; ;L210004 HC.c: 1035: pr_btn_op = 0;
+[; ;L210004 HC.c: 1035: if(RB2){
 "1035
-[e = _pr_btn_op -> -> 0 `i `uc ]
+[e $ ! _RB2 392  ]
+{
+[; ;L210004 HC.c: 1036: if(RA5 || RA4 || RB3 || RE0 || RB1 || RB4 || RD1){
 "1036
+[e $ ! || || || || || || _RA5 _RA4 _RB3 _RE0 _RB1 _RB4 _RD1 393  ]
+{
+"1037
 }
-[e :U 447 ]
-[; ;L210004 HC.c: 1036: }
-[; ;L210004 HC.c: 1038: if(RB2){
+[; ;L210004 HC.c: 1037: }
+[e $U 394  ]
 "1038
-[e $ ! _RB2 448  ]
+[e :U 393 ]
+[; ;L210004 HC.c: 1038: else{
 {
-[; ;L210004 HC.c: 1039: if(RA5 || RA4 || RB3 || RE0 || RB1 ||
-[; ;L210004 HC.c: 1040: RD5 || RD3 || RA6 || RC5 || RB4 || RC3 || RD1){
+[; ;L210004 HC.c: 1039: pr_btn_cl = 1;
+"1039
+[e = _pr_btn_cl -> -> 1 `i `uc ]
 "1040
-[e $ ! || || || || || || || || || || || _RA5 _RA4 _RB3 _RE0 _RB1 _RD5 _RD3 _RA6 _RC5 _RB4 _RC3 _RD1 449  ]
-{
+}
+[e :U 394 ]
 "1041
 }
+[; ;L210004 HC.c: 1040: }
 [; ;L210004 HC.c: 1041: }
-[e $U 450  ]
+[e $U 395  ]
 "1042
-[e :U 449 ]
+[e :U 392 ]
 [; ;L210004 HC.c: 1042: else{
 {
-[; ;L210004 HC.c: 1043: pr_btn_cl = 1;
+[; ;L210004 HC.c: 1043: pr_btn_cl = 0;
 "1043
-[e = _pr_btn_cl -> -> 1 `i `uc ]
+[e = _pr_btn_cl -> -> 0 `i `uc ]
 "1044
 }
-[e :U 450 ]
-"1045
-}
+[e :U 395 ]
 [; ;L210004 HC.c: 1044: }
-[; ;L210004 HC.c: 1045: }
-[e $U 451  ]
+[; ;L210004 HC.c: 1046: if(RA4){
 "1046
-[e :U 448 ]
-[; ;L210004 HC.c: 1046: else{
+[e $ ! _RA4 396  ]
 {
-[; ;L210004 HC.c: 1047: pr_btn_cl = 0;
+[; ;L210004 HC.c: 1047: if(RB3 || RA5 || RB2 || RE0 || RB1 || RB4 || RD1){
 "1047
-[e = _pr_btn_cl -> -> 0 `i `uc ]
+[e $ ! || || || || || || _RB3 _RA5 _RB2 _RE0 _RB1 _RB4 _RD1 397  ]
+{
 "1048
 }
-[e :U 451 ]
 [; ;L210004 HC.c: 1048: }
-[; ;L210004 HC.c: 1050: if(RA4){
+[e $U 398  ]
+"1049
+[e :U 397 ]
+[; ;L210004 HC.c: 1049: else{
+{
+[; ;L210004 HC.c: 1050: hr_btn_op = 1;
 "1050
-[e $ ! _RA4 452  ]
-{
-[; ;L210004 HC.c: 1051: if(RB3 || RA5 || RB2 || RE0 || RB1 ||
-[; ;L210004 HC.c: 1052: RD5 || RD3 || RA6 || RC5 || RB4 || RC3 || RD1){
-"1052
-[e $ ! || || || || || || || || || || || _RB3 _RA5 _RB2 _RE0 _RB1 _RD5 _RD3 _RA6 _RC5 _RB4 _RC3 _RD1 453  ]
-{
-"1053
-}
-[; ;L210004 HC.c: 1053: }
-[e $U 454  ]
-"1054
-[e :U 453 ]
-[; ;L210004 HC.c: 1054: else{
-{
-[; ;L210004 HC.c: 1055: hr_btn_op = 1;
-"1055
 [e = _hr_btn_op -> -> 1 `i `uc ]
-"1056
+"1051
 }
-[e :U 454 ]
-"1057
+[e :U 398 ]
+"1052
 }
-[; ;L210004 HC.c: 1056: }
-[; ;L210004 HC.c: 1057: }
-[e $U 455  ]
-"1058
-[e :U 452 ]
-[; ;L210004 HC.c: 1058: else{
+[; ;L210004 HC.c: 1051: }
+[; ;L210004 HC.c: 1052: }
+[e $U 399  ]
+"1053
+[e :U 396 ]
+[; ;L210004 HC.c: 1053: else{
 {
-[; ;L210004 HC.c: 1059: hr_btn_op = 0;
-"1059
+[; ;L210004 HC.c: 1054: hr_btn_op = 0;
+"1054
 [e = _hr_btn_op -> -> 0 `i `uc ]
+"1055
+}
+[e :U 399 ]
+[; ;L210004 HC.c: 1055: }
+[; ;L210004 HC.c: 1057: if(RB3){
+"1057
+[e $ ! _RB3 400  ]
+{
+[; ;L210004 HC.c: 1058: if(RA4 || RA5 || RB2 || RE0 || RB1 || RB4 || RD1){
+"1058
+[e $ ! || || || || || || _RA4 _RA5 _RB2 _RE0 _RB1 _RB4 _RD1 401  ]
+{
+"1059
+}
+[; ;L210004 HC.c: 1059: }
+[e $U 402  ]
 "1060
-}
-[e :U 455 ]
-[; ;L210004 HC.c: 1060: }
-[; ;L210004 HC.c: 1062: if(RB3){
-"1062
-[e $ ! _RB3 456  ]
+[e :U 401 ]
+[; ;L210004 HC.c: 1060: else{
 {
-[; ;L210004 HC.c: 1063: if(RA4 || RA5 || RB2 || RE0 || RB1 ||
-[; ;L210004 HC.c: 1064: RD5 || RD3 || RA6 || RC5 || RB4 || RC3 || RD1){
-"1064
-[e $ ! || || || || || || || || || || || _RA4 _RA5 _RB2 _RE0 _RB1 _RD5 _RD3 _RA6 _RC5 _RB4 _RC3 _RD1 457  ]
-{
-"1065
-}
-[; ;L210004 HC.c: 1065: }
-[e $U 458  ]
-"1066
-[e :U 457 ]
-[; ;L210004 HC.c: 1066: else{
-{
-[; ;L210004 HC.c: 1067: hr_btn_cl = 1;
-"1067
+[; ;L210004 HC.c: 1061: hr_btn_cl = 1;
+"1061
 [e = _hr_btn_cl -> -> 1 `i `uc ]
-"1068
+"1062
 }
-[e :U 458 ]
-"1069
+[e :U 402 ]
+"1063
 }
-[; ;L210004 HC.c: 1068: }
-[; ;L210004 HC.c: 1069: }
-[e $U 459  ]
-"1070
-[e :U 456 ]
-[; ;L210004 HC.c: 1070: else{
+[; ;L210004 HC.c: 1062: }
+[; ;L210004 HC.c: 1063: }
+[e $U 403  ]
+"1064
+[e :U 400 ]
+[; ;L210004 HC.c: 1064: else{
 {
-[; ;L210004 HC.c: 1071: hr_btn_cl = 0;
-"1071
+[; ;L210004 HC.c: 1065: hr_btn_cl = 0;
+"1065
 [e = _hr_btn_cl -> -> 0 `i `uc ]
-"1072
+"1066
 }
-[e :U 459 ]
-[; ;L210004 HC.c: 1072: }
-[; ;L210004 HC.c: 1074: if(!(--time_out)){
-"1074
-[e $ ! ! != =- _time_out -> 1 `i -> 0 `i 460  ]
+[e :U 403 ]
+[; ;L210004 HC.c: 1066: }
+[; ;L210004 HC.c: 1068: if(!(--time_out)){
+"1068
+[e $ ! ! != =- _time_out -> 1 `i -> 0 `i 404  ]
 {
-[; ;L210004 HC.c: 1075: time_out = 200;
-"1075
+[; ;L210004 HC.c: 1069: time_out = 200;
+"1069
 [e = _time_out -> 200 `i ]
-[; ;L210004 HC.c: 1076: if(massage_timeout){
-"1076
-[e $ ! != _massage_timeout -> 0 `i 461  ]
+[; ;L210004 HC.c: 1070: if(massage_timeout){
+"1070
+[e $ ! != _massage_timeout -> 0 `i 405  ]
 {
-[; ;L210004 HC.c: 1077: if(!(--massage_timeout)){
-"1077
-[e $ ! ! != =- _massage_timeout -> 1 `i -> 0 `i 462  ]
+[; ;L210004 HC.c: 1071: if(!(--massage_timeout)){
+"1071
+[e $ ! ! != =- _massage_timeout -> 1 `i -> 0 `i 406  ]
 {
-[; ;L210004 HC.c: 1078: hc_led_off();
-"1078
+[; ;L210004 HC.c: 1072: hc_led_off();
+"1072
 [e ( _hc_led_off ..  ]
-[; ;L210004 HC.c: 1079: pwr_on = 1;
-"1079
+[; ;L210004 HC.c: 1073: pwr_on = 1;
+"1073
 [e = _pwr_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1080: mode_state = 1;
-"1080
+[; ;L210004 HC.c: 1074: mode_state = 1;
+"1074
 [e = _mode_state -> 1 `i ]
-"1081
+"1075
 }
-[e :U 462 ]
+[e :U 406 ]
+"1076
+}
+[e :U 405 ]
+[; ;L210004 HC.c: 1075: }
+[; ;L210004 HC.c: 1076: }
+[; ;L210004 HC.c: 1077: if(heat_timeout){
+"1077
+[e $ ! != _heat_timeout -> 0 `i 407  ]
+{
+[; ;L210004 HC.c: 1078: if(!(--heat_timeout)){
+"1078
+[e $ ! ! != =- _heat_timeout -> 1 `i -> 0 `i 408  ]
+{
+[; ;L210004 HC.c: 1079: LATA3 = 1;
+"1079
+[e = _LATA3 -> -> 1 `i `b ]
+[; ;L210004 HC.c: 1080: heat_on = 1;
+"1080
+[e = _heat_on -> -> 1 `i `uc ]
+[; ;L210004 HC.c: 1081: heat_off = 0;
+"1081
+[e = _heat_off -> -> 0 `i `uc ]
 "1082
 }
-[e :U 461 ]
-[; ;L210004 HC.c: 1081: }
-[; ;L210004 HC.c: 1082: }
-[; ;L210004 HC.c: 1083: if(heat_timeout){
+[e :U 408 ]
 "1083
-[e $ ! != _heat_timeout -> 0 `i 463  ]
-{
-[; ;L210004 HC.c: 1084: if(!(--heat_timeout)){
+}
+[e :U 407 ]
 "1084
-[e $ ! ! != =- _heat_timeout -> 1 `i -> 0 `i 464  ]
-{
-[; ;L210004 HC.c: 1085: LATA3 = 1;
+}
+[e :U 404 ]
 "1085
-[e = _LATA3 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1086: heat_on = 1;
+}
+[e :U 379 ]
+[; ;L210004 HC.c: 1082: }
+[; ;L210004 HC.c: 1083: }
+[; ;L210004 HC.c: 1084: }
+[; ;L210004 HC.c: 1085: }
+[; ;L210004 HC.c: 1086: TMR0IF = 0;
 "1086
-[e = _heat_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1087: heat_off = 0;
-"1087
-[e = _heat_off -> -> 0 `i `uc ]
-"1088
-}
-[e :U 464 ]
-"1089
-}
-[e :U 463 ]
-"1090
-}
-[e :U 460 ]
-"1091
-}
-[e :U 435 ]
-[; ;L210004 HC.c: 1088: }
-[; ;L210004 HC.c: 1089: }
-[; ;L210004 HC.c: 1090: }
-[; ;L210004 HC.c: 1091: }
-[; ;L210004 HC.c: 1092: TMR0IF = 0;
-"1092
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;L210004 HC.c: 1093: }
-"1093
-[e :UE 434 ]
+[; ;L210004 HC.c: 1087: }
+"1087
+[e :UE 378 ]
 }
-"1095
+"1089
 [v _hc_led_on `(v  1 ef ]
 {
-[; ;L210004 HC.c: 1095: void hc_led_on(){
+[; ;L210004 HC.c: 1089: void hc_led_on(){
 [e :U _hc_led_on ]
 [f ]
-[; ;L210004 HC.c: 1096: LATD0 = 0;
-"1096
+[; ;L210004 HC.c: 1090: LATD0 = 0;
+"1090
 [e = _LATD0 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 1097: LATD4 = 0;
-"1097
-[e = _LATD4 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 1098: z0_off = 1;
-"1098
+[; ;L210004 HC.c: 1092: z0_off = 1;
+"1092
 [e = _z0_off -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1099: z0_on = 0;
-"1099
+[; ;L210004 HC.c: 1093: z0_on = 0;
+"1093
 [e = _z0_on -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 1100: LATD2 = 0;
-"1100
-[e = _LATD2 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 1101: z1_off = 1;
-"1101
+[; ;L210004 HC.c: 1095: z1_off = 1;
+"1095
 [e = _z1_off -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1102: z1_on = 0;
-"1102
+[; ;L210004 HC.c: 1096: z1_on = 0;
+"1096
 [e = _z1_on -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 1103: LATA7 = 0;
-"1103
-[e = _LATA7 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 1104: z2_off = 1;
-"1104
+[; ;L210004 HC.c: 1098: z2_off = 1;
+"1098
 [e = _z2_off -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1105: z2_on = 0;
-"1105
+[; ;L210004 HC.c: 1099: z2_on = 0;
+"1099
 [e = _z2_on -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 1106: LATC4 = 0;
-"1106
-[e = _LATC4 -> -> 0 `i `b ]
-[; ;L210004 HC.c: 1107: z3_off = 1;
-"1107
+[; ;L210004 HC.c: 1101: z3_off = 1;
+"1101
 [e = _z3_off -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1108: z3_on = 0;
-"1108
+[; ;L210004 HC.c: 1102: z3_on = 0;
+"1102
 [e = _z3_on -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 1109: }
-"1109
-[e :UE 465 ]
+[; ;L210004 HC.c: 1103: }
+"1103
+[e :UE 409 ]
 }
-"1111
+"1105
 [v _hc_led_off `(v  1 ef ]
 {
-[; ;L210004 HC.c: 1111: void hc_led_off(){
+[; ;L210004 HC.c: 1105: void hc_led_off(){
 [e :U _hc_led_off ]
 [f ]
-[; ;L210004 HC.c: 1112: LATD0 = 1;
-"1112
+[; ;L210004 HC.c: 1106: LATD0 = 1;
+"1106
 [e = _LATD0 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1113: LATC2 = 1;
-"1113
-[e = _LATC2 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1114: LATC1 = 1;
-"1114
-[e = _LATC1 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1115: LATC0 = 1;
-"1115
-[e = _LATC0 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1116: LATD4 = 1;
-"1116
-[e = _LATD4 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1117: z0_on = 1;
-"1117
+[; ;L210004 HC.c: 1111: z0_on = 1;
+"1111
 [e = _z0_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1118: z0_off = 0;
-"1118
+[; ;L210004 HC.c: 1112: z0_off = 0;
+"1112
 [e = _z0_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 1119: LATD2 = 1;
-"1119
-[e = _LATD2 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1120: z1_on = 1;
-"1120
+[; ;L210004 HC.c: 1114: z1_on = 1;
+"1114
 [e = _z1_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1121: z1_off = 0;
-"1121
+[; ;L210004 HC.c: 1115: z1_off = 0;
+"1115
 [e = _z1_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 1122: LATA7 = 1;
-"1122
-[e = _LATA7 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1123: z2_on = 1;
-"1123
+[; ;L210004 HC.c: 1117: z2_on = 1;
+"1117
 [e = _z2_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1124: z2_off = 0;
-"1124
+[; ;L210004 HC.c: 1118: z2_off = 0;
+"1118
 [e = _z2_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 1125: LATC4 = 1;
-"1125
-[e = _LATC4 -> -> 1 `i `b ]
-[; ;L210004 HC.c: 1126: z3_on = 1;
-"1126
+[; ;L210004 HC.c: 1120: z3_on = 1;
+"1120
 [e = _z3_on -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1127: z3_off = 0;
-"1127
+[; ;L210004 HC.c: 1121: z3_off = 0;
+"1121
 [e = _z3_off -> -> 0 `i `uc ]
-[; ;L210004 HC.c: 1128: }
-"1128
-[e :UE 466 ]
+[; ;L210004 HC.c: 1122: }
+"1122
+[e :UE 410 ]
 }
-"1130
+"1124
 [v _syn_synack_ack `(uc  1 ef ]
 {
-[; ;L210004 HC.c: 1130: bool syn_synack_ack(){
+[; ;L210004 HC.c: 1124: bool syn_synack_ack(){
 [e :U _syn_synack_ack ]
 [f ]
-"1131
+"1125
 [v _echo `uc  1 a ]
-[; ;L210004 HC.c: 1131: bool echo = 1;
+[; ;L210004 HC.c: 1125: bool echo = 1;
 [e = _echo -> -> 1 `i `uc ]
-[; ;L210004 HC.c: 1132: do{
-"1132
-[e :U 470 ]
+[; ;L210004 HC.c: 1126: do{
+"1126
+[e :U 414 ]
 {
-[; ;L210004 HC.c: 1133: putch('?');
-"1133
+[; ;L210004 HC.c: 1127: putch('?');
+"1127
 [e ( _putch (1 -> -> 63 `ui `uc ]
-"1134
+"1128
 [v _c `uc  1 a ]
-[; ;L210004 HC.c: 1134: char c = getch();
+[; ;L210004 HC.c: 1128: char c = getch();
 [e = _c ( _getch ..  ]
-[; ;L210004 HC.c: 1135: asm("clrwdt");
-"1135
+[; ;L210004 HC.c: 1129: asm("clrwdt");
+"1129
 [; clrwdt ;#
-[; ;L210004 HC.c: 1136: if(c == '!'){
-"1136
-[e $ ! == -> _c `ui -> 33 `ui 471  ]
+[; ;L210004 HC.c: 1130: if(c == '!'){
+"1130
+[e $ ! == -> _c `ui -> 33 `ui 415  ]
 {
-[; ;L210004 HC.c: 1137: putch('~');
-"1137
+[; ;L210004 HC.c: 1131: putch('~');
+"1131
 [e ( _putch (1 -> -> 126 `ui `uc ]
-[; ;L210004 HC.c: 1138: echo = 0;
-"1138
+[; ;L210004 HC.c: 1132: echo = 0;
+"1132
 [e = _echo -> -> 0 `i `uc ]
-"1139
+"1133
 }
-[e :U 471 ]
-"1140
+[e :U 415 ]
+"1134
 }
-[; ;L210004 HC.c: 1139: }
-[; ;L210004 HC.c: 1140: }while(echo);
-[e $ != -> _echo `i -> -> -> 0 `i `uc `i 470  ]
-[e :U 469 ]
-[; ;L210004 HC.c: 1142: return 1;
-"1142
+[; ;L210004 HC.c: 1133: }
+[; ;L210004 HC.c: 1134: }while(echo);
+[e $ != -> _echo `i -> -> -> 0 `i `uc `i 414  ]
+[e :U 413 ]
+[; ;L210004 HC.c: 1136: return 1;
+"1136
 [e ) -> -> 1 `i `uc ]
-[e $UE 467  ]
-[; ;L210004 HC.c: 1144: }
-"1144
-[e :UE 467 ]
+[e $UE 411  ]
+[; ;L210004 HC.c: 1138: }
+"1138
+[e :UE 411 ]
 }
-"1147
+"1141
 [v _connection_est `(v  1 ef ]
 {
-[; ;L210004 HC.c: 1147: void connection_est(){
+[; ;L210004 HC.c: 1141: void connection_est(){
 [e :U _connection_est ]
 [f ]
-[; ;L210004 HC.c: 1148: for(int i = 0; i < 3; ++i){
-"1148
+[; ;L210004 HC.c: 1142: for(int i = 0; i < 3; ++i){
+"1142
 {
 [v _i `i  1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 3 `i 473  ]
-[e $U 474  ]
-[e :U 473 ]
+[e $ < _i -> 3 `i 417  ]
+[e $U 418  ]
+[e :U 417 ]
 {
-[; ;L210004 HC.c: 1149: hc_led_on();
-"1149
+[; ;L210004 HC.c: 1143: hc_led_on();
+"1143
 [e ( _hc_led_on ..  ]
-[; ;L210004 HC.c: 1150: _delay((unsigned long)((150)*(4000000/4000.0)));
-"1150
+[; ;L210004 HC.c: 1144: _delay((unsigned long)((150)*(4000000/4000.0)));
+"1144
 [e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;L210004 HC.c: 1151: hc_led_off();
-"1151
+[; ;L210004 HC.c: 1145: hc_led_off();
+"1145
 [e ( _hc_led_off ..  ]
-[; ;L210004 HC.c: 1152: _delay((unsigned long)((150)*(4000000/4000.0)));
-"1152
+[; ;L210004 HC.c: 1146: _delay((unsigned long)((150)*(4000000/4000.0)));
+"1146
 [e ( __delay (1 -> * -> -> 150 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"1153
+"1147
 }
-"1148
+"1142
 [e =+ _i -> 1 `i ]
-[e $ < _i -> 3 `i 473  ]
-[e :U 474 ]
-"1153
+[e $ < _i -> 3 `i 417  ]
+[e :U 418 ]
+"1147
 }
-[; ;L210004 HC.c: 1153: }
-[; ;L210004 HC.c: 1154: }
-"1154
-[e :UE 472 ]
+[; ;L210004 HC.c: 1147: }
+[; ;L210004 HC.c: 1148: }
+"1148
+[e :UE 416 ]
 }
